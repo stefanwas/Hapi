@@ -65,11 +65,10 @@ textarea {
 */
 
 .products-header , .products-content {
-    /*background: #D1CCCC;*/
     padding: 4px;
 }
 
-.products td {
+.products > tbody > tr > td {
     padding: 3px;
 }
 
@@ -90,7 +89,7 @@ textarea {
 }
 
 .prod-amount > input {
-    width: 35px;
+    width: 100%;
     text-align: right;
 }
 
@@ -127,6 +126,7 @@ td.prod-sum {
 }
 
 .percent-sign {
+    margin-left: 2px;
     vertical-align: center;
 }
 

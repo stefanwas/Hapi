@@ -62,9 +62,9 @@
 
 
 
-    <div class="row products">
+    <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered table-condensed table-hover">
+            <table class="table table-bordered table-condensed table-hover products">
                 <thead>
                 <tr class="active">
                     <th class="prod-lp">Lp.</th>
@@ -84,10 +84,10 @@
                         <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.name}}"/>
                     </td>
                     <td class="prod-amount number">
-                        <input type="text" value="{{item.amount}}" ng-model="item.amount" ng-change="updateItem(item)"/>
+                        <input type="text" value="{{item.amount}}" pattern="[0-9]?" ng-model="item.amount" ng-change="updateItem(item)"/>
                     </td>
                     <td class="prod-price number">
-                        <input type="text" value="{{item.price}}" ng-model="item.price" ng-change="updateItem(item)"/>
+                        <input type="text" value="{{item.price}}" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-change="updateItem(item)"/>
                     </td>
                     <td class="prod-value number">{{item.value}}</td>
 
