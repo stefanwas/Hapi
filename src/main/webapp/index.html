@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HAPI APP</title>
+
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="css/main.css" rel="stylesheet">
+
+    <script src="lib/underscore/underscore-min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+
+    <script src="js/main.js"></script>
+</head>
+
+<body ng-app="hapi">
+<div id="faktura" class="container" ng-controller="MainController">
+    <div class="row">
+        <div class="col-md-12 title text-center">Faktura VAT</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">Nr FVAT/2014/12</div>
+    </div>
+
+
+    <div class="row info">
+        <div class="col-md-3">Data sprzedazy:</div>
+        <div class="col-md-2">{{deliveryDate}}</div>
+    </div>
+
+    <div class="row info">
+        <div class="col-md-3">Data wystawienia faktury:</div>
+        <div class="col-md-2">{{issueDate}}</div>
+    </div>
+
+    <div class="row parties">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="active">
+                        <th>Sprzedawca</th>
+                        <th>Nabywca</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <textarea placeholder="dane sprzedawcy"></textarea>
+                        </td>
+                        <td>
+                            <textarea placeholder="dane nabywcy"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="row products">
+        <div class="col-md-12">
+            <table class="table table-bordered table-condensed table-hover">
+                <thead>
+                <tr class="active">
+                    <th class="prod-lp">Lp.</th>
+                    <th class="prod-name">Produkt/Usługa</th>
+                    <th>Ilość</th>
+                    <th>Cena netto</th>
+                    <th>Wartość netto</th>
+                    <th>VAT</th>
+                    <th>Kwota VAT</th>
+                    <th>Wartość brutto</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items track by $index">
+                    <td class="prod-lp">{{$index + 1}}</td>
+                    <td class="prod-name">
+                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.name}}"/>
+                    </td>
+                    <td class="prod-amount number">
+                        <input type="text" value="{{item.amount}}" ng-model="item.amount" ng-change="updateItem(item)"/>
+                    </td>
+                    <td class="prod-price number">
+                        <input type="text" value="{{item.price}}" ng-model="item.price" ng-change="updateItem(item)"/>
+                    </td>
+                    <td class="prod-value number">{{item.value}}</td>
+
+                    <td class="prod-vat-percent number">
+                        <input type="text" value="{{item.vatPercent}}" maxlength="2" ng-model="item.vatPercent" ng-change="updateItem(item)"/><span class="percent-sign">%</span>
+                    </td>
+                    <td class="prod-vat-value number">{{item.vatValue}}</td>
+                    <td class="prod-total-cost number">{{item.totalValue}}</td>
+                </tr>
+
+                <tr class="bold">
+                    <td class="prod-sum" colspan="4">Suma [PLN]</td>
+
+                    <td class="prod-value number">{{totalNetto}}</td>
+                    <td class="prod-vat-percent number"> </td>
+                    <td class="prod-vat-amount number">{{totalVAT}}</td>
+                    <td class="prod-total-cost number">{{totalBrutto}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-info btn-xs" ng-click="addNewItem()">Dodaj pozycję</button>
+        </div>
+        <div class="col-md-6 text-right">
+            <button type="button" class="btn btn-info btn-xs" ng-click="removeItem()">Usuń pozycję</button>
+        </div>
+    </div>
+
+    <div class="row info" id="payment">
+        <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto}} PLN</span> (dwanaście tysięcy trzysta PLN 00/100)</div>
+        <div class="col-md-12">Termin płatności: 14 dni</div>
+        <div class="col-md-12">Forma płatności: przelew</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 col-md-push-8 text-center">
+            <input id="issuer-name" type="text" value="{{issuerName}}" ng-model="issuerName" maxlength="30"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-push-8 text-center">osoba wystawiająca fakturę</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-danger" ng-click="removeAllItems()">Wyczyść wszystko</button>
+            <button type="button" class="btn btn-success">Pobierz fakturę</button>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

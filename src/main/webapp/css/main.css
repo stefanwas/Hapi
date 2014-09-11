@@ -1,0 +1,135 @@
+#faktura {
+    width: 920px;
+}
+
+#payment {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.title {
+    align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+table {
+    width: 100%;
+}
+
+textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    min-height: 140px;
+    max-height: 140px;
+    resize: none;
+}
+
+.info {
+    margin-top:4px;
+}
+
+.parties {
+    margin-top: 25px;
+}
+
+/*
+.parties th, .parties td {
+    border: 1px solid black;
+    border-spacing: 0px;
+    width: 50%;
+    padding: 2px;
+}
+
+.parties th {
+    background: #D1CCCC;
+}
+
+.parties td {
+    height: 160px;
+}
+*/
+.products {
+    margin-top: 40px;
+}
+
+/*
+.products th, .products td {
+    border: 1px solid black;
+    border-spacing: 0px;
+    padding: 2px;
+}
+*/
+
+.products-header , .products-content {
+    /*background: #D1CCCC;*/
+    padding: 4px;
+}
+
+.products td {
+    padding: 3px;
+}
+
+.prod-lp {
+    width: 3%;
+}
+
+.prod-name {
+    width: 40%;
+}
+
+.prod-name > input {
+    width: 100%;
+}
+
+.prod-amount {
+    width: 5%;
+}
+
+.prod-amount > input {
+    width: 35px;
+    text-align: right;
+}
+
+.prod-price > input {
+    width: 100px;
+    text-align: right;
+}
+
+.prod-vat-percent {
+    width: 5%;
+}
+
+.prod-vat-percent > input {
+    width: 20px;
+    text-align: right;
+}
+
+td.prod-sum {
+    text-align:right;
+    border: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.number {
+    text-align:right;
+}
+
+.total-amount {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.percent-sign {
+    vertical-align: center;
+}
+
+#issuer-name {
+    text-align: center;
+}
