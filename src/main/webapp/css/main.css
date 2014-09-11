@@ -7,6 +7,10 @@
     margin-bottom: 10px;
 }
 
+#dates {
+    margin-top: 20px;
+}
+
 .title {
     align: center;
     margin-top: 40px;
@@ -36,24 +40,9 @@ textarea {
     margin-top: 25px;
 }
 
-/*
-.parties th, .parties td {
-    border: 1px solid black;
-    border-spacing: 0px;
-    width: 50%;
-    padding: 2px;
-}
-
-.parties th {
-    background: #D1CCCC;
-}
-
-.parties td {
-    height: 160px;
-}
-*/
 .products {
     margin-top: 40px;
+    margin-bottom: 5px;
 }
 
 /*
@@ -93,8 +82,12 @@ textarea {
     text-align: right;
 }
 
+.prod-price {
+    width: 10%;
+}
+
 .prod-price > input {
-    width: 100px;
+    width: 100%;
     text-align: right;
 }
 
