@@ -15,4 +15,11 @@ public class InvoiceGeneratorWS {
     public String isAlive() {
         return "I'm fine, thanks.";
     }
+
+    @GET
+    @Path("/generate")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String generate() {
+        return "I'm fine, thanks.";
+    }
 }

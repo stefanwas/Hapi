@@ -1,0 +1,6 @@
+1. Improve layout
+2. add currency formatting
+3. add frontend-backend communication
+4. prepare pdf template
+5. add field validation
+6. add integration test (backend)
