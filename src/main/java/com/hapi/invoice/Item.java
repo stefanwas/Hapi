@@ -1,14 +1,25 @@
 package com.hapi.invoice;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Item {
 
+    @XmlElement
     private String name;
+    @XmlElement
     private float amount;
+    @XmlElement
     private float price;
+    @XmlElement
     private float value;
+    @XmlElement
     private float vatPercent;
+    @XmlElement
     private float vatValue;
+    @XmlElement
     private float totalValue;
 
     public String getName() {

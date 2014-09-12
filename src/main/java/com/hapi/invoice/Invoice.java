@@ -1,19 +1,34 @@
 package com.hapi.invoice;
 
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Invoice {
 
+    @XmlElement
     private String invoiceNumber;
+    @XmlElement
     private final List<Item> items = new ArrayList<>();
+    @XmlElement
     private String sellDate;
+    @XmlElement
     private String issueDate;
+    @XmlElement
     private String sellerInfo;
+    @XmlElement
     private String buyerInfo;
+    @XmlElement
     private String paymentPeriod;
+    @XmlElement
     private String paymentForm;
+    @XmlElement
     private String issuer;
 
     public String getInvoiceNumber() {

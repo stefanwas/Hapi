@@ -14,7 +14,7 @@
     <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/controller.js"></script>
 </head>
 
 <body ng-app="hapi">
@@ -145,7 +145,7 @@
     <div class="row">
         <div class="col-md-12">
             <button type="button" class="btn btn-danger" ng-click="removeAllItems()">Wyczyść wszystko</button>
-            <button type="button" class="btn btn-success">Pobierz fakturę</button>
+            <button type="button" class="btn btn-success" ng-click="generateInvoice()">Pobierz fakturę</button>
         </div>
     </div>
 
