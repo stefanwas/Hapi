@@ -1,4 +1,4 @@
-var invoiceServiceURL = 'http\\://localhost\\:8080/generator/rest/invoice/generate';
+var invoiceServiceURL = 'http\\://localhost\\:8080/generator/rest/invoice/generate-pdf';
 
 var hapi = angular.module('hapi',[ 'ngResource' ]);
 
@@ -35,7 +35,7 @@ hapi.controller('MainController', function($scope, invoiceService) {
 //TODO finish it
     function createInvoice() {
         return {
-            invoiceNumber : "FVAT/2014/12X",
+            invoiceNumber : "FVAT201412X",
             sellDate : $scope.deliveryDate,
             issueDate : $scope.issueDate,
             sellerInfo : "ala ma kota",
@@ -76,7 +76,9 @@ hapi.controller('MainController', function($scope, invoiceService) {
 
     $scope.generateInvoice = function() {
 
-        var invoiceData = createInvoice();
+        var invoiceData = {
+            invoice : createInvoice()
+        };
 
         invoiceService.generate(invoiceData,
             function (result) {
