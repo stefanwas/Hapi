@@ -7,6 +7,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/invoice")
 public class InvoiceGeneratorWS {
 
+    private InvoiceProvider invoiceProvider;
+
     @GET
     @Path("/check")
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,5 +59,9 @@ public class InvoiceGeneratorWS {
         item.setTotalValue(650.5f);
 
         return item;
+    }
+
+    public void setInvoiceProvider(InvoiceProvider invoiceProvider) {
+        this.invoiceProvider = invoiceProvider;
     }
 }
