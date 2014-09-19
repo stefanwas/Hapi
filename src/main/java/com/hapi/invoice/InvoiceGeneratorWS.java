@@ -3,6 +3,7 @@ package com.hapi.invoice;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.OutputStream;
 
 @Path("/invoice")
 public class InvoiceGeneratorWS {
@@ -23,13 +24,26 @@ public class InvoiceGeneratorWS {
         return createFakeInvoice();
     }
 
-    @POST
+//    @POST
+//    @Path("/generate-pdf")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Invoice generatePdf(Invoice source) {
+//        return source;
+//    }
+
+    @GET
     @Path("/generate-pdf")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Invoice generatePdf(Invoice source) {
+    @Produces("application/pdf")
+    public Invoice generatePdf(Invoice source) throws Exception {
+
+        Invoice invoice = createFakeInvoice();
+        OutputStream pdf = this.invoiceProvider.generateInvoiceAsPdf(invoice);
+
         return source;
     }
+
     private Invoice createFakeInvoice() {
         Invoice invoice = new Invoice();
 
