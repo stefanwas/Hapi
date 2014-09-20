@@ -20,15 +20,7 @@
     </jaxrs:server>
 
     <bean id="invoiceGeneratorWS" class="com.hapi.invoice.InvoiceGeneratorWS">
-            <property name="invoiceProvider" ref="invoiceProvider"/>
-    </bean>
-
-    <bean id="invoiceProvider" class="com.hapi.invoice.InvoiceProvider">
-        <property name="reportFactory" ref="reportFactory"/>
-    </bean>
-
-    <bean id="reportFactory" class="com.hapi.invoice.report.ReportFactory">
-
+            <property name="invoiceGenerator" ref="invoiceGenerator"/>
     </bean>
 
 </beans>
