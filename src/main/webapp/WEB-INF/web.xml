@@ -12,10 +12,7 @@
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <init-param>
             <param-name>config-location</param-name>
-            <param-value>
-                classpath:spring/ws-config.xml,
-                classpath:spring/app-config.xml
-            </param-value>
+            <param-value>classpath:spring/ws-config.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

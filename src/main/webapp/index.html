@@ -74,7 +74,7 @@
                 <thead>
                 <tr class="active">
                     <th class="prod-lp">Lp.</th>
-                    <th class="prod-name">Produkt/Usługa</th>
+                    <th class="prod-nameName">Produkt/Usługa</th>
                     <th>Ilość</th>
                     <th>Cena netto</th>
                     <th>Wartość netto</th>
@@ -86,8 +86,8 @@
                 <tbody>
                 <tr ng-repeat="item in items track by $index">
                     <td class="prod-lp">{{$index + 1}}</td>
-                    <td class="prod-name">
-                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.name}}"/>
+                    <td class="prod-nameName">
+                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.nameName}}"/>
                     </td>
                     <td class="prod-amount number">
                         <input type="text" class="control" maxlength="3" value="{{item.amount}}" pattern="[0-9]?" ng-model="item.amount" ng-change="updateItem(item)"/>
@@ -135,7 +135,7 @@
 
     <div class="row">
         <div class="col-md-4 col-md-push-8 text-center">
-            <input id="issuer-name" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" maxlength="30"/>
+            <input id="issuer-nameName" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" maxlength="30"/>
         </div>
     </div>
     <div class="row">

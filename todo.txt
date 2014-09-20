@@ -5,3 +5,4 @@
 5. add field validation
 6. add integration test (backend) DONE
 7. logging
+8. optimize jasper report factory (read and compite the template only once)

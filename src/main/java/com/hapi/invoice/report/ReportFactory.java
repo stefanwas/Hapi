@@ -17,11 +17,11 @@ public class ReportFactory {
 
     public static final String REPORT_TEMPLATE = "/templates/invoice_template.jrxml";
 
-    public OutputStream createReport(ReportData reportData) throws Exception {
+    public byte[]  createReport(ReportData reportData) throws Exception {
 
         JasperReport report = loadReportTemplate();
         JasperPrint print = fillReportWithData(report, reportData);
-        OutputStream output = exportToPdfAsStream(print);
+        byte[] output = exportToPdfAsStream(print);
 
         return output;
     }
@@ -52,8 +52,8 @@ public class ReportFactory {
         return params;
     }
 
-    private OutputStream exportToPdfAsStream(JasperPrint print) throws JRException {
-        OutputStream output = new ByteArrayOutputStream();
+    private byte[] exportToPdfAsStream(JasperPrint print) throws JRException {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         JRExporter exporter = new JRPdfExporter();
 
         exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
@@ -61,6 +61,6 @@ public class ReportFactory {
 
         exporter.exportReport();
 
-        return output;
+        return output.toByteArray();
     }
 }

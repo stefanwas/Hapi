@@ -2,7 +2,7 @@ package com.hapi.invoice.report;
 
 public class ReportDataItem {
 
-    private String name;
+    private String itemName;
     private float amount;
     private float price;
     private float value;
@@ -18,12 +18,12 @@ public class ReportDataItem {
         this.totalValue = totalValue;
     }
 
-    public String getName() {
-        return name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public float getAmount() {

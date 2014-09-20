@@ -4,7 +4,6 @@ import com.hapi.invoice.report.ReportData;
 import com.hapi.invoice.report.ReportDataItem;
 import com.hapi.invoice.report.ReportFactory;
 
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,10 +13,10 @@ public class InvoiceGenerator {
 
     private ReportFactory reportFactory;
 
-    public OutputStream generateInvoiceAsPdf(Invoice invoice) throws Exception {
+    public byte[] generateInvoiceAsPdf(Invoice invoice) throws Exception {
 
         ReportData reportData = convertToReportData(invoice);
-        OutputStream reportContent = this.reportFactory.createReport(reportData);
+        byte[] reportContent = this.reportFactory.createReport(reportData);
 
         return reportContent;
     }
@@ -40,7 +39,7 @@ public class InvoiceGenerator {
         for (Item item : items) {
             ReportDataItem dataItem = new ReportDataItem();
 
-            dataItem.setName(item.getName());
+            dataItem.setItemName(item.getName());
             //TODO convert other fields
 
             reportDataItems.add(dataItem);

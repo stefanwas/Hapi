@@ -10,6 +10,8 @@
                             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
                             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
+    <import resource="classpath:spring/app-config.xml"/>
+
     <jaxrs:server id="invoiceGeneratorServer" address="/">
         <jaxrs:serviceBeans>
             <ref bean="invoiceGeneratorWS" />
