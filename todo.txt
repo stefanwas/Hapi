@@ -3,5 +3,5 @@
 3. add frontend-backend communication
 4. prepare pdf template
 5. add field validation
-6. add integration test (backend)
+6. add integration test (backend) DONE
 7. logging
