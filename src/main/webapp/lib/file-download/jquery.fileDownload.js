@@ -124,8 +124,13 @@ $.extend({
             //Note that some browsers will POST the string htmlentity-encoded whilst others will decode it before POSTing.
             //It is recommended that on the server, htmlentity decoding is done irrespective.
             //
-            encodeHTMLEntities: true
-            
+            encodeHTMLEntities: true,
+
+            // WK added
+            encoding: 'application/json'
+
+
+
         }, options);
 
         var deferred = new $.Deferred();
@@ -308,7 +313,7 @@ $.extend({
                     formDoc = getiframeDocument($iframe);
                 }
 
-                formDoc.write("<html><head></head><body><form method='" + settings.httpMethod + "' action='" + fileUrl + "'>" + formInnerHtml + "</form>" + settings.popupWindowTitle + "</body></html>");
+                formDoc.write("<html><head></head><body><form method='" + settings.httpMethod + "' enctype='" + settings.encoding + "' action='" + fileUrl + "'>" + formInnerHtml + "</form>" + settings.popupWindowTitle + "</body></html>");
                 $form = $(formDoc).find('form');
             }
 

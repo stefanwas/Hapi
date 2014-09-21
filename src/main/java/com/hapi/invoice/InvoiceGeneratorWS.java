@@ -29,9 +29,20 @@ public class InvoiceGeneratorWS {
     @POST
     @Path("/generate-pdf")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Invoice generate0Pdf(Invoice source) {
-        return source;
+//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+//    @Produces(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces("application/xml")
+    public Response generate0Pdf(Invoice source) throws Exception {
+
+        byte[] pdf = this.invoiceGenerator.generateInvoiceAsPdf(source);
+
+        Response.ResponseBuilder responseBuilder = Response.ok(pdf);
+
+        responseBuilder.header("Content-disposition","attachment; filename=" + "faktura.pdf");
+
+        Response response = responseBuilder.build();
+
+        return response;
     }
 
     @GET

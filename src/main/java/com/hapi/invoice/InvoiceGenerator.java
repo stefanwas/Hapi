@@ -32,7 +32,7 @@ public class InvoiceGenerator {
         return reportData;
     }
 
-    private Collection<? extends ReportDataItem> convertToReportItemData(List<Item> items) {
+    private Collection<ReportDataItem> convertToReportItemData(List<Item> items) {
 
         List<ReportDataItem> reportDataItems = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class InvoiceGenerator {
         invoice.setSellDate("2014.09.10");
         invoice.setPaymentForm("przelew");
         invoice.setPaymentPeriod("14 dni");
-        invoice.setIssuer("Wojciech Krzysztofik");
+        invoice.setIssuer("Stefan Telefan");
 
         for (int i = 0; i < 3; i++) {
             invoice.getItems().add(createFakeItem());

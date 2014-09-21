@@ -1,8 +1,9 @@
 var invoiceServiceURL = 'http\\://localhost\\:8080/generator/rest/invoice/generate-pdf';
+var invoiceGeneratorURL = 'rest/invoice/generate-pdf';
 
 var hapi = angular.module('hapi',[ 'ngResource' ]);
 
-hapi.controller('MainController', function($scope, invoiceService) {
+hapi.controller('MainController', function($scope, invoiceService, downloadService) {
 
     $scope.deliveryDate = '09.2014'
     $scope.issueDate = '30.09.2014';
@@ -80,18 +81,49 @@ hapi.controller('MainController', function($scope, invoiceService) {
             invoice : createInvoice()
         };
 
-        invoiceService.generate(invoiceData,
-            function (result) {
-                console.log(">>>RES: " + angular.toJson(result, true));
-            },
-            function (error) {
-                console.log(">>>ERR: " + angular.toJson(result, true));
-            }
-        );
+        downloadService.downloadFile(invoiceGeneratorURL, invoiceData);
+
+//        invoiceService.generate(invoiceData,
+//            function (result) {
+//                console.log(">>>RES: " + angular.toJson(result, true));
+//            },
+//            function (error) {
+//                console.log(">>>ERR: " + angular.toJson(result, true));
+//            }
+//        );
     };
 
     init();
 
+});
+
+hapi.service('downloadService', function() {
+
+    var service = {};
+
+    service.downloadFile = function(link, data) {
+        var payload = {
+            httpMethod: 'POST',
+            dataType: 'json',
+            contentType:"application/json",
+            data: data,
+//            headers: {
+//                'Accept' : "*/*",
+//                'Content-Type': "application/json; charset=utf-8"
+//            },
+            accept: '*/*'
+        };
+
+        $.fileDownload(link, payload)
+        .done(function() {
+            // nothing to do
+        })
+        .fail(function() {
+            // TODO show alert
+        });
+    };
+
+    return service;
 });
 
 hapi.factory('invoiceService', [ '$resource', function($resource) {
@@ -106,3 +138,4 @@ hapi.factory('invoiceService', [ '$resource', function($resource) {
 
         return $resource(invoiceServiceURL, {}, {generate : requestParams});
 }]);
+
