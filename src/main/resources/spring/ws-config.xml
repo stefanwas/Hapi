@@ -23,6 +23,7 @@
 
     <bean id="invoiceGeneratorWS" class="com.hapi.invoice.InvoiceGeneratorWS">
             <property name="invoiceGenerator" ref="invoiceGenerator"/>
+            <property name="invoiceUnmarshaller" ref="invoiceUnmarshaller" />
     </bean>
 
 </beans>

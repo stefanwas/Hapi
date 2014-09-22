@@ -5,6 +5,6 @@
 5. add field validation
 6. add integration test (backend) DONE
 7. logging
-8. optimize jasper report factory (read and compile the template only once)
+8. optimize jasper report factory (read and compile the template only once) DONE
 9. change main package name
 10. error handling

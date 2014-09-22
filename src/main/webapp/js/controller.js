@@ -81,7 +81,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             invoice : createInvoice()
         };
 
-        downloadService.downloadFile(invoiceGeneratorURL, invoiceData);
+        downloadService.downloadFile(invoiceGeneratorURL, 'invoice=' + angular.toJson(createInvoice(), false));
 
 //        invoiceService.generate(invoiceData,
 //            function (result) {

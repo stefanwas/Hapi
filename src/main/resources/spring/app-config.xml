@@ -14,8 +14,10 @@
         <property name="reportFactory" ref="reportFactory"/>
     </bean>
 
-    <bean id="reportFactory" class="com.hapi.invoice.report.ReportFactory">
+    <bean id="invoiceUnmarshaller" class="com.hapi.invoice.InvoiceUnmarshaller">
+    </bean>
 
+    <bean id="reportFactory" class="com.hapi.invoice.report.ReportFactory" init-method="init">
     </bean>
 
 </beans>

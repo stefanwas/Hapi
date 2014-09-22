@@ -16,11 +16,15 @@ import java.util.Map;
 public class ReportFactory {
 
     public static final String REPORT_TEMPLATE = "/templates/invoice_template.jrxml";
+    private JasperReport reportTemplate;
+
+    public void init() throws JRException {
+        this.reportTemplate = loadReportTemplate();
+    }
 
     public byte[]  createReport(ReportData reportData) throws Exception {
 
-        JasperReport report = loadReportTemplate();
-        JasperPrint print = fillReportWithData(report, reportData);
+        JasperPrint print = fillReportWithData(this.reportTemplate, reportData);
         byte[] output = exportToPdfAsStream(print);
 
         return output;
