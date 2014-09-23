@@ -30,7 +30,7 @@
 
     <div id="dates">
         <div class="row info">
-            <div class="col-md-3">Data sprzedazy:</div>
+            <div class="col-md-3">Data sprzedaży:</div>
             <div class="col-md-2">
                 <input id="delivery-date" class="input" type="text" value="{{deliveryDate}}" ng-model="deliveryDate" maxlength="10"/>
             </div>
@@ -56,10 +56,10 @@
                 <tbody>
                     <tr>
                         <td>
-                            <textarea placeholder="dane sprzedawcy"></textarea>
+                            <textarea placeholder={{sellerInfoPlaceholder}}>{{sellerInfo}}</textarea>
                         </td>
                         <td>
-                            <textarea placeholder="dane nabywcy"></textarea>
+                            <textarea placeholder={{buyerInfoPlaceholder}}>{{buyerInfo}}</textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -71,11 +71,11 @@
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered table-condensed table-hover products">
+            <table id="product-table" class="table table-bordered table-condensed table-hover products">
                 <thead>
                 <tr class="active">
                     <th class="prod-lp">Lp.</th>
-                    <th class="prod-nameName">Produkt/Usługa</th>
+                    <th class="prod-name">Produkt/Usługa</th>
                     <th>Ilość</th>
                     <th>Cena netto</th>
                     <th>Wartość netto</th>
@@ -87,8 +87,8 @@
                 <tbody>
                 <tr ng-repeat="item in items track by $index">
                     <td class="prod-lp">{{$index + 1}}</td>
-                    <td class="prod-nameName">
-                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.nameName}}"/>
+                    <td class="prod-name">
+                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.name}}"/>
                     </td>
                     <td class="prod-amount number">
                         <input type="text" class="control" maxlength="3" value="{{item.amount}}" pattern="[0-9]?" ng-model="item.amount" ng-change="updateItem(item)"/>
@@ -120,34 +120,46 @@
 
     <div class="row">
         <div class="col-md-6">
-            <button type="button" class="btn btn-info btn-xs" ng-click="addNewItem()">Dodaj pozycję</button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="addNewItem()">Dodaj pozycję</button>
         </div>
         <div class="col-md-6 text-right">
-            <button type="button" class="btn btn-info btn-xs" ng-click="removeItem()">Usuń pozycję</button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="removeItem()">Usuń pozycję</button>
         </div>
     </div>
 
     <div class="row info" id="payment">
         <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto}} PLN</span> (dwanaście tysięcy trzysta PLN 00/100)</div>
-        <div class="col-md-12">Termin płatności: 14 dni</div>
-        <div class="col-md-12">Forma płatności: przelew</div>
+    </div>
+
+    <div class="row info">
+        <div class="col-md-3">Termin płatności:</div>
+        <div class="col-md-2">
+            <input id="payment-period" class="input" type="text" value="{{paymentPeriod}}" ng-model="paymentPeriod" maxlength="10"/>
+        </div>
+    </div>
+
+    <div class="row info">
+        <div class="col-md-3">Forma płatności:</div>
+        <div class="col-md-2">
+            <input id="payment-form" class="input" type="text" value="{{paymentForm}}" ng-model="paymentForm" maxlength="10"/>
+        </div>
     </div>
 
 
+
     <div class="row">
-        <div class="col-md-4 col-md-push-8 text-center">
-            <input id="issuer-nameName" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" maxlength="30"/>
+        <div class="col-md-6 col-md-push-6 text-center">
+            <input id="issuer-name" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" placeholder="imię i nazwisko" maxlength="40"/>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-md-push-8 text-center">osoba wystawiająca fakturę</div>
+        <div class="col-md-6 col-md-push-6 text-center">osoba wystawiająca fakturę</div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
             <button type="button" class="btn btn-danger" ng-click="removeAllItems()">Wyczyść wszystko</button>
             <button type="button" class="btn btn-success" ng-click="generateInvoice()">Pobierz fakturę</button>
-
         </div>
     </div>
 

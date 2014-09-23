@@ -50,7 +50,7 @@ public class InvoiceGeneratorWS {
 //    @Consumes(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 //    @Produces(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces("application/xml")
+    @Produces("application/pdf")
     public Response generate0Pdf(@FormParam("invoice") String invoiceContent) throws Exception {
 
         Invoice invoice = this.invoiceUnmarshaller.unmarshall(invoiceContent);

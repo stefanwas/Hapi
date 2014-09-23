@@ -5,16 +5,23 @@ var hapi = angular.module('hapi',[ 'ngResource' ]);
 
 hapi.controller('MainController', function($scope, invoiceService, downloadService) {
 
-    $scope.deliveryDate = '09.2014'
+    $scope.deliveryDate = '30.09.2014'
     $scope.issueDate = '30.09.2014';
 
-    $scope.items = [];
+    $scope.sellerInfo = '';
+    $scope.sellerInfoPlaceholder = ' Internaltional Trading SA\n ul. Marszałkowska 1/1A\n 000-01 Warszawa';
+    $scope.buyerInfo = '';
+    $scope.buyerInfoPlaceholder = ' Internaltional Trading SA\n ul. Marszałkowska 1/1A\n 000-01 Warszawa';
 
     $scope.totalNetto = 0;
     $scope.totalVAT = 0;
     $scope.totalBrutto = 0;
 
+    $scope.paymentPeriod = '14 dni';
+    $scope.paymentForm = 'przelew';
     $scope.issuerName = "";
+
+    $scope.items = [];
 
     function createEmptyItem() {
         return {
@@ -35,15 +42,20 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
 //TODO finish it
     function createInvoice() {
+
+        var items = [];
+        items.push(createEmptyItem());
+
         return {
             invoiceNumber : "FVAT201412X",
             sellDate : $scope.deliveryDate,
             issueDate : $scope.issueDate,
-            sellerInfo : "ala ma kota",
-            buyerInfo : "ola ma rower",
-            paymentPeriod : "21 dni",
-            paymentForm : "gotówka",
-            issuer : $scope.issuerName
+            sellerInfo : $scope.sellerInfo,
+            buyerInfo : $scope.buyerInfo,
+            paymentPeriod : $scope.paymentPeriod,
+            paymentForm : $scope.paymentForm,
+            issuer : $scope.issuerName,
+            items : items
         };
     }
 
@@ -77,11 +89,14 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     $scope.generateInvoice = function() {
 
-        var invoiceData = {
-            invoice : createInvoice()
-        };
+//        var invoiceData = {
+//            invoice : createInvoice()
+//        };
 
-        downloadService.downloadFile(invoiceGeneratorURL, 'invoice=' + angular.toJson(createInvoice(), false));
+        var invoice = createInvoice();
+        console.log(">>>INVOICE: " + angular.toJson(invoice, true));
+
+        downloadService.downloadFile(invoiceGeneratorURL, 'invoice=' + angular.toJson(invoice, false));
 
 //        invoiceService.generate(invoiceData,
 //            function (result) {

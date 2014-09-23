@@ -1,20 +1,25 @@
 #faktura {
     width: 920px;
-}
-
-#payment {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    height: 1000px;
+    border: 4px solid black;
 }
 
 #dates {
     margin-top: 20px;
 }
 
+#dates input {
+     height: 20px;
+}
+
+/*#delivery-date {
+    height: 20px;
+}*/
+
 .title {
     align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 5px;
     font-size: 30px;
 }
 
@@ -40,9 +45,18 @@ textarea {
     margin-top: 25px;
 }
 
+.parties div table tbody tr td {
+    padding: 2px;
+    /*margin 2px;*/
+}
+
 .products {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 5px;
+}
+
+#product-table input {
+    height: 20px;
 }
 
 /*
@@ -123,6 +137,16 @@ td.prod-sum {
     vertical-align: center;
 }
 
+#payment {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#payment-period, #payment-form {
+    height: 20px;
+}
+
 #issuer-name {
+    width: 200px;
     text-align: center;
 }
