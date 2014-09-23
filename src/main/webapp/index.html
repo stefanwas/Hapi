@@ -19,27 +19,29 @@
 </head>
 
 <body ng-app="hapi">
-<div id="faktura" class="container" ng-controller="MainController">
+<div id="invoice" class="container" ng-controller="MainController">
     <div class="row">
         <div class="col-md-12 title text-center">Faktura VAT</div>
     </div>
 
     <div class="row">
-        <div class="col-md-12 text-center">Nr FVAT/2014/12</div>
+        <div class="col-md-12 text-center">
+            Nr <input id="invoice-number" class="input" type="text" value="{{invoiceNumber}}" placeholder="numer faktury" ng-model="invoiceNumber" maxlength="16" required>
+        </div>
     </div>
 
     <div id="dates">
         <div class="row info">
             <div class="col-md-3">Data sprzedaży:</div>
             <div class="col-md-2">
-                <input id="delivery-date" class="input" type="text" value="{{deliveryDate}}" ng-model="deliveryDate" maxlength="10"/>
+                <input id="delivery-date" class="input" type="text" value="{{deliveryDate}}" ng-model="deliveryDate" maxlength="10" required/>
             </div>
         </div>
 
         <div class="row info">
             <div class="col-md-3">Data wystawienia faktury:</div>
             <div class="col-md-2">
-                <input id="issue-date" class="input" type="text" value="{{issueDate}}" ng-model="issueDate" maxlength="10"/>
+                <input id="issue-date" class="input" type="text" value="{{issueDate}}" ng-model="issueDate" maxlength="10" required/>
             </div>
         </div>
     </div>
@@ -56,10 +58,10 @@
                 <tbody>
                     <tr>
                         <td>
-                            <textarea placeholder={{sellerInfoPlaceholder}}>{{sellerInfo}}</textarea>
+                            <textarea placeholder={{sellerInfoPlaceholder}} required>{{sellerInfo}}</textarea>
                         </td>
                         <td>
-                            <textarea placeholder={{buyerInfoPlaceholder}}>{{buyerInfo}}</textarea>
+                            <textarea placeholder={{buyerInfoPlaceholder}} required>{{buyerInfo}}</textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -88,18 +90,18 @@
                 <tr ng-repeat="item in items track by $index">
                     <td class="prod-lp">{{$index + 1}}</td>
                     <td class="prod-name">
-                        <input type="text" placeholder="Nazwa produktu lub usługi" value="{{item.name}}"/>
+                        <input type="text" placeholder="nazwa produktu lub usługi" value="{{item.name}}" required/>
                     </td>
                     <td class="prod-amount number">
-                        <input type="text" class="control" maxlength="3" value="{{item.amount}}" pattern="[0-9]?" ng-model="item.amount" ng-change="updateItem(item)"/>
+                        <input type="text" class="control" maxlength="3" value="{{item.amount}}" pattern="[0-9]+" ng-model="item.amount" ng-change="updateItem(item)" required/>
                     </td>
                     <td class="prod-price number">
-                        <input type="text" class="control" maxlength="9" value="{{item.price}}" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-change="updateItem(item)"/>
+                        <input type="text" class="control" maxlength="9" value="{{item.price}}" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-change="updateItem(item)" required/>
                     </td>
                     <td class="prod-value number">{{item.value}}</td>
 
                     <td class="prod-vat-percent number">
-                        <input type="text" value="{{item.vatPercent}}" maxlength="2" ng-model="item.vatPercent" ng-change="updateItem(item)"/><span class="percent-sign">%</span>
+                        <input type="text" value="{{item.vatPercent}}" maxlength="2" ng-model="item.vatPercent" ng-change="updateItem(item)" required/><span class="percent-sign">%</span>
                     </td>
                     <td class="prod-vat-value number">{{item.vatValue}}</td>
                     <td class="prod-total-cost number">{{item.totalValue}}</td>
@@ -149,7 +151,7 @@
 
     <div class="row">
         <div class="col-md-6 col-md-push-6 text-center">
-            <input id="issuer-name" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" placeholder="imię i nazwisko" maxlength="40"/>
+            <input id="issuer-name" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" placeholder="imię i nazwisko" maxlength="40" required/>
         </div>
     </div>
     <div class="row">

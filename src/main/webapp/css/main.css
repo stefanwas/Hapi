@@ -1,7 +1,12 @@
-#faktura {
+#invoice {
     width: 920px;
     height: 1000px;
     border: 4px solid black;
+}
+
+#invoice-number {
+    width: 120px;
+    height: 20px;
 }
 
 #dates {
@@ -106,11 +111,11 @@ textarea {
 }
 
 .prod-vat-percent {
-    width: 5%;
+    width: 5.5%;
 }
 
 .prod-vat-percent > input {
-    width: 20px;
+    width: 25px;
     text-align: right;
 }
 
@@ -149,4 +154,10 @@ td.prod-sum {
 #issuer-name {
     width: 200px;
     text-align: center;
+}
+
+input:required:invalid, input:focus:invalid {
+  /* insert your own styles for invalid form input */
+/*  -moz-box-shadow: none;*/
+  border: 1px solid red;
 }

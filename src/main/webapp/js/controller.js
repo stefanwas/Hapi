@@ -5,7 +5,8 @@ var hapi = angular.module('hapi',[ 'ngResource' ]);
 
 hapi.controller('MainController', function($scope, invoiceService, downloadService) {
 
-    $scope.deliveryDate = '30.09.2014'
+    $scope.invoiceNumber = '';
+    $scope.deliveryDate = '30.09.2014';
     $scope.issueDate = '30.09.2014';
 
     $scope.sellerInfo = '';
@@ -19,13 +20,13 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     $scope.paymentPeriod = '14 dni';
     $scope.paymentForm = 'przelew';
-    $scope.issuerName = "";
+    $scope.issuerName = '';
 
     $scope.items = [];
 
     function createEmptyItem() {
         return {
-            name : "",
+            name : '',
             amount : 1,
             price : 0,
             value : 0,
@@ -37,7 +38,6 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     function init() {
         $scope.addNewItem();
-        $scope.issuerName = "Wojciech Krzysztofik";
     }
 
 //TODO finish it
@@ -47,7 +47,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         items.push(createEmptyItem());
 
         return {
-            invoiceNumber : "FVAT201412X",
+            invoiceNumber : $scope.invoiceNumber,
             sellDate : $scope.deliveryDate,
             issueDate : $scope.issueDate,
             sellerInfo : $scope.sellerInfo,
