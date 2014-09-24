@@ -3,7 +3,7 @@ var invoiceGeneratorURL = 'rest/invoice/generate-pdf';
 
 var hapi = angular.module('hapi',[ 'ngResource' ]);
 
-hapi.controller('MainController', function($scope, invoiceService, downloadService) {
+hapi.controller('MainController', function($scope, invoiceService, downloadService, currencyService) {
 
     $scope.invoiceNumber = '';
     $scope.deliveryDate = '30.09.2014';
@@ -17,6 +17,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     $scope.totalNetto = 0;
     $scope.totalVAT = 0;
     $scope.totalBrutto = 0;
+    $scope.totalBruttoText = '';
 
     $scope.paymentPeriod = '14 dni';
     $scope.paymentForm = 'przelew';
@@ -38,6 +39,10 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     function init() {
         $scope.addNewItem();
+    }
+
+    function extractFloatPart(value) {
+        return Math.floor(($scope.totalBrutto - Math.floor($scope.totalBrutto)) * 100);
     }
 
 //TODO finish it
@@ -85,6 +90,8 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         $scope.totalNetto = _.reduce($scope.items, function(sum, item) {return sum + item.value}, 0);
         $scope.totalVAT = _.reduce($scope.items, function(sum, item) {return sum + item.vatValue}, 0);
         $scope.totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.totalValue}, 0);
+        $scope.totalBruttoGrosze = extractFloatPart($scope.totalBrutto);
+        $scope.totalBruttoText = currencyService.getTextDescription($scope.totalBrutto);
     };
 
     $scope.generateInvoice = function() {

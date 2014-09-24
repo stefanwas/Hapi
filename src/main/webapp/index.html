@@ -16,6 +16,7 @@
     <script src="lib/angular-route/angular-route.min.js"></script>
 
     <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
 </head>
 
 <body ng-app="hapi">
@@ -130,7 +131,7 @@
     </div>
 
     <div class="row info" id="payment">
-        <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto}} PLN</span> (dwanaście tysięcy trzysta PLN 00/100)</div>
+        <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto}} PLN </span>({{totalBruttoText}} PLN {{totalBruttoGrosze}}/100)</div>
     </div>
 
     <div class="row info">

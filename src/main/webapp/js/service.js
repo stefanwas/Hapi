@@ -16,7 +16,7 @@
 hapi.service('currencyService', function() {
 
     // 0 <= intValue <= 999
-    function getAsText(var intValue) {
+    function getAsText(intValue) {
         var result = '';
 
         var hundred = Math.floor(intValue/100);
@@ -79,9 +79,12 @@ hapi.service('currencyService', function() {
                 case 9 : result += 'dziewięć'; break;
             }
         }
+
+        return result;
     }
 
-    function getMillionForm(var intValue) {
+    function getMillionForm(intValue) {
+        var hundred = Math.floor(intValue/100);
         var tens = Math.floor((intValue - 100 * hundred) / 10);
         var ones = intValue % 10;
 
@@ -100,7 +103,8 @@ hapi.service('currencyService', function() {
         return 'milionów';
     }
 
-    function getThousandForm(var intValue) {
+    function getThousandForm(intValue) {
+        var hundred = Math.floor(intValue/100);
         var tens = Math.floor((intValue - 100 * hundred) / 10);
         var ones = intValue % 10;
 
@@ -119,28 +123,32 @@ hapi.service('currencyService', function() {
         return 'tysięcy';
     }
 
-    function getMillionsAsText(var millions) {
+    function getMillionsAsText(millions) {
         var millionText = getAsText(millions);
         var millionForm = getMillionForm(millions);
         return millionText + ' ' + millionForm;
     }
 
-    function getThousandsAsText(var thousands) {
-        var thousandText = getTextDescription(thousands);
-        var thousandForm = getMillionForm(thousands);
+    function getThousandsAsText(thousands) {
+        var thousandText = getAsText(thousands);
+        var thousandForm = getThousandForm(thousands);
         return thousandText + ' ' + thousandForm;
     }
-    function getUnitsAsText(var thousands) {
-        var unitText = getTextDescription(thousands);
+    function getUnitsAsText(units) {
+        var unitText = getAsText(units);
         return unitText;
     }
 
     var service = {};
 
-    service.getTextDescription = function(var value) {
+    service.getTextDescription = function(value) {
 
         var maxValue = 999999999;
         var minValue = 0;
+
+        if (!value) {
+            return '0';
+        }
 
         if (value > maxValue) {
             return "to już jest grubsza sumka..."; // out of range message
@@ -157,9 +165,10 @@ hapi.service('currencyService', function() {
         var units = intValue % 1000;
 
         var result = '';
-        result += (millions != 0) ? getMillionsAsText(millions) : ' ';
-        result += (thousands != 0) ? getThousandsAsText(thousands) : ' ';
-        result += (units != 0) ? getUnitsAsText(units) : ' ';
+
+        result += (millions != 0) ? getMillionsAsText(millions) : '';
+        result += (thousands != 0) ? ((result.length > 0) ? ' ' : '') + getThousandsAsText(thousands) : '';
+        result += (units != 0) ? ((result.length > 0) ? ' ' : '') + getUnitsAsText(units) : '';
 
         return result;
     };
