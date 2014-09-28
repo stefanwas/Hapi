@@ -6,11 +6,11 @@ var hapi = angular.module('hapi',[ 'ngResource' ]);
 hapi.controller('MainController', function($scope, invoiceService, downloadService, currencyService) {
 
     $scope.invoiceNumber = '';
-    $scope.deliveryDate = '30.09.2014';
-    $scope.issueDate = '30.09.2014';
+    $scope.deliveryDate = getCurrentDate();
+    $scope.issueDate = getCurrentDate();
 
     $scope.sellerInfo = '';
-    $scope.sellerInfoPlaceholder = ' Internaltional Trading SA\n' +
+    $scope.sellerInfoPlaceholder = ' Przykładowy Sprzedawca\n' +
         ' ul. Marszałkowska 1/1A\n 000-01 Warszawa\n NIP: 768-800-44-52\n\n Nr konta:' +
         ' 12 1510 1000 2000 3000 4000 0001\n Bank: PKO BP';
     $scope.issuerName = '';
@@ -18,6 +18,12 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     $scope.paymentForm = '';
 
     $scope.items = [];
+
+    function getCurrentDate() {
+        var now = new Date();
+
+        return now.getDate() + '.' + (now.getMonth() + 1) + '.' + now.getFullYear();
+    }
 
     function createEmptyItem() {
         return {
@@ -40,12 +46,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         return Math.floor((total - Math.floor(total)) * 100);
     }
 
-//TODO finish it
     function createInvoice() {
-
-        var items = [];
-        items.push(createEmptyItem());
-
         return {
             invoiceNumber : $scope.invoiceNumber,
             sellDate : $scope.deliveryDate,
@@ -55,12 +56,8 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             paymentPeriod : $scope.paymentPeriod,
             paymentForm : $scope.paymentForm,
             issuer : $scope.issuerName,
-            items : items
+            items : $scope.items
         };
-    }
-
-    function formatMoney(n, currency) {
-        return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.");
     }
 
     $scope.addNewItem = function() {
@@ -109,15 +106,11 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         var totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.totalValue}, 0);
         $scope.totalBrutto = totalBrutto;
 
-        $scope.totalBruttoGrosze = extractDecimalPart(totalBrutto);
-        $scope.totalBruttoText = currencyService.getTextDescription(totalBrutto);
+
+        $scope.totalBruttoAsText = currencyService.getTextDescription(totalBrutto);
     };
 
     $scope.generateInvoice = function() {
-
-//        var invoiceData = {
-//            invoice : createInvoice()
-//        };
 
         var invoice = createInvoice();
         console.log(">>>INVOICE: " + angular.toJson(invoice, true));
@@ -145,7 +138,7 @@ hapi.service('downloadService', function() {
     service.downloadFile = function(link, data) {
         var payload = {
             httpMethod: 'POST',
-            dataType: 'json',
+//            dataType: 'json',
             contentType:"application/json",
             data: data,
 //            headers: {

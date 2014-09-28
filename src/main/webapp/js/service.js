@@ -38,7 +38,7 @@ hapi.service('currencyService', function() {
         }
 
         if (ten >= 2) {
-            result += ' ';
+            if (result.length > 0) result += ' ';
             switch (ten) {
                 case 2 : result += 'dwadzieścia'; break;
                 case 3 : result += 'trzydzieści'; break;
@@ -50,7 +50,7 @@ hapi.service('currencyService', function() {
                 case 9 : result += 'dziewięćdziesiąt'; break;
             }
         } else if (ten == 1) {
-            result += ' ';
+            if (result.length > 0) result += ' ';
             switch (one) {
                 case 0 : result += 'dziesięć'; break;
                 case 1 : result += 'jedenaście'; break;
@@ -66,7 +66,7 @@ hapi.service('currencyService', function() {
         }
 
         if (one > 0 && ten != 1) {
-            result += ' ';
+            if (result.length > 0) result += ' ';
             switch (one) {
                 case 1 : result += 'jeden'; break;
                 case 2 : result += 'dwa'; break;
@@ -139,6 +139,10 @@ hapi.service('currencyService', function() {
         return unitText;
     }
 
+    function extractDecimalPart(value) {
+        return Math.round((value - Math.floor(value)) * 100);
+    }
+
     var service = {};
 
     service.getTextDescription = function(value) {
@@ -147,32 +151,37 @@ hapi.service('currencyService', function() {
         var minValue = 0;
 
         if (!value) {
-            return '-';
+            return '';
         }
 
         if (value > maxValue) {
-            return "to już jest grubsza sumka..."; // out of range message
+            return ''; // out of range message
         }
 
         if (value < minValue) {
-            return "mniej niż zero..."; // out of range message
+            return ''; // out of range message
         }
 
-        var intValue = Math.floor(value);
-        if (intValue == 0) {
-            return 'zero';
+        var valueAsMoney = value.toFixed(2);
+
+        var decimalPart = extractDecimalPart(valueAsMoney);
+        var integerPart = Math.floor(valueAsMoney);
+
+        if (integerPart == 0) {
+            return '(zero PLN ' + decimalPart + '/100)';
         }
 
+        var millions = Math.floor(integerPart / 1000000);
+        var thousands = Math.floor((integerPart - millions * 1000000)/1000);
+        var units = integerPart % 1000;
 
-        var millions = Math.floor(intValue / 1000000);
-        var thousands = Math.floor((intValue - millions * 1000000)/1000);
-        var units = intValue % 1000;
-
-        var result = '';
+        var result = '(';
 
         result += (millions != 0) ? getMillionsAsText(millions) : '';
-        result += (thousands != 0) ? ((result.length > 0) ? ' ' : '') + getThousandsAsText(thousands) : '';
-        result += (units != 0) ? ((result.length > 0) ? ' ' : '') + getUnitsAsText(units) : '';
+        result += (thousands != 0) ? ((result.length > 1) ? ' ' : '') + getThousandsAsText(thousands) : '';
+        result += (units != 0) ? ((result.length > 1) ? ' ' : '') + getUnitsAsText(units) : '';
+
+        result += ' PLN ' + decimalPart + '/100)';
 
         return result;
     };
