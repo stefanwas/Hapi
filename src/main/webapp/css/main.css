@@ -37,9 +37,10 @@ textarea {
     padding: 0;
     border: none;
     width: 100%;
-    min-height: 140px;
-    max-height: 140px;
+    height: 142px;
+   /* height: 140px;*/
     resize: none;
+    overflow-y: none;
 }
 
 .info {
@@ -156,8 +157,6 @@ td.prod-sum {
     text-align: center;
 }
 
-input:required:invalid, input:focus:invalid {
-  /* insert your own styles for invalid form input */
-/*  -moz-box-shadow: none;*/
+input:required:invalid, textarea:required:invalid {
   border: 1px solid red;
 }

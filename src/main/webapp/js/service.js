@@ -147,7 +147,7 @@ hapi.service('currencyService', function() {
         var minValue = 0;
 
         if (!value) {
-            return '0';
+            return '-';
         }
 
         if (value > maxValue) {
@@ -155,10 +155,14 @@ hapi.service('currencyService', function() {
         }
 
         if (value < minValue) {
-        return "mniej niż zero..."; // out of range message
+            return "mniej niż zero..."; // out of range message
         }
 
         var intValue = Math.floor(value);
+        if (intValue == 0) {
+            return 'zero';
+        }
+
 
         var millions = Math.floor(intValue / 1000000);
         var thousands = Math.floor((intValue - millions * 1000000)/1000);

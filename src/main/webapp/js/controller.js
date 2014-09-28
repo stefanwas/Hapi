@@ -10,18 +10,12 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     $scope.issueDate = '30.09.2014';
 
     $scope.sellerInfo = '';
-    $scope.sellerInfoPlaceholder = ' Internaltional Trading SA\n ul. Marszałkowska 1/1A\n 000-01 Warszawa';
-    $scope.buyerInfo = '';
-    $scope.buyerInfoPlaceholder = ' Internaltional Trading SA\n ul. Marszałkowska 1/1A\n 000-01 Warszawa';
-
-    $scope.totalNetto = 0;
-    $scope.totalVAT = 0;
-    $scope.totalBrutto = 0;
-    $scope.totalBruttoText = '';
-
-    $scope.paymentPeriod = '14 dni';
-    $scope.paymentForm = 'przelew';
+    $scope.sellerInfoPlaceholder = ' Internaltional Trading SA\n' +
+        ' ul. Marszałkowska 1/1A\n 000-01 Warszawa\n NIP: 768-800-44-52\n\n Nr konta:' +
+        ' 12 1510 1000 2000 3000 4000 0001\n Bank: PKO BP';
     $scope.issuerName = '';
+    $scope.paymentPeriod = '';
+    $scope.paymentForm = '';
 
     $scope.items = [];
 
@@ -41,8 +35,9 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         $scope.addNewItem();
     }
 
-    function extractFloatPart(value) {
-        return Math.floor(($scope.totalBrutto - Math.floor($scope.totalBrutto)) * 100);
+    function extractDecimalPart(value) {
+        var total = $scope.totalBrutto.toFixed(2);
+        return Math.floor((total - Math.floor(total)) * 100);
     }
 
 //TODO finish it
@@ -64,6 +59,10 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         };
     }
 
+    function formatMoney(n, currency) {
+        return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.");
+    }
+
     $scope.addNewItem = function() {
         $scope.items.push(createEmptyItem());
     };
@@ -75,23 +74,43 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     $scope.removeAllItems = function() {
         $scope.items = [];
+        $scope.addNewItem();
         $scope.updateTotal();
     };
 
+    $scope.clearAll = function() {
+            $scope.invoiceNumber = '';
+            $scope.deliveryDate = '';
+            $scope.issueDate = '';
+            $scope.sellerInfo = '';
+            $scope.buyerInfo = '';
+            $scope.paymentPeriod = '';
+            $scope.paymentForm = '';
+            $scope.issuerName = '';
+
+            $scope.removeAllItems();
+    };
+
     $scope.updateItem = function(item) {
-        item.value = item.amount * item.price;
-        item.vatValue = item.value * item.vatPercent / 100;
+        item.value = (item.amount == null || item.price == null) ? 0 : item.amount * item.price;
+        item.vatValue = (item.vatPercent == null) ? 0 : item.value * item.vatPercent / 100;
         item.totalValue = item.value + item.vatValue;
 
         $scope.updateTotal();
     };
 
     $scope.updateTotal = function() {
-        $scope.totalNetto = _.reduce($scope.items, function(sum, item) {return sum + item.value}, 0);
-        $scope.totalVAT = _.reduce($scope.items, function(sum, item) {return sum + item.vatValue}, 0);
-        $scope.totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.totalValue}, 0);
-        $scope.totalBruttoGrosze = extractFloatPart($scope.totalBrutto);
-        $scope.totalBruttoText = currencyService.getTextDescription($scope.totalBrutto);
+        var totalNetto = _.reduce($scope.items, function(sum, item) {return sum + item.value}, 0);
+        $scope.totalNetto = totalNetto;
+
+        var totalVAT = _.reduce($scope.items, function(sum, item) {return sum + item.vatValue}, 0);
+        $scope.totalVAT = totalVAT;
+
+        var totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.totalValue}, 0);
+        $scope.totalBrutto = totalBrutto;
+
+        $scope.totalBruttoGrosze = extractDecimalPart(totalBrutto);
+        $scope.totalBruttoText = currencyService.getTextDescription(totalBrutto);
     };
 
     $scope.generateInvoice = function() {

@@ -24,13 +24,6 @@ public class InvoiceGeneratorWS {
     private InvoiceGenerator invoiceGenerator;
     private InvoiceUnmarshaller invoiceUnmarshaller;
 
-//    public InvoiceGeneratorWS() {
-//        this.jacksonMapper = new ObjectMapper();
-//        this.jacksonMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
-//        this.jacksonMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
-//        this.jacksonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//    }
-
     @GET
     @Path("/check")
     @Produces(MediaType.APPLICATION_JSON)
@@ -83,18 +76,11 @@ public class InvoiceGeneratorWS {
         return response;
     }
 
-//    private Invoice unmarshall(String reportRequestText) throws Exception {
-//
-//        InputStream stream = new ByteArrayInputStream(reportRequestText.getBytes("UTF-8"));
-//        Invoice result = this.jacksonMapper.readValue(stream, Invoice.class);
-//
-//        return result;
-//    }
-
     private void addAccessControlHeader(HttpServletResponse response) {
         response.addHeader(ACCESS_CONTROL, ALL_LOCATIONS);
         response.setCharacterEncoding("UTF-8");
     }
+
     @Required
     public void setInvoiceGenerator(InvoiceGenerator invoiceGenerator) {
         this.invoiceGenerator = invoiceGenerator;

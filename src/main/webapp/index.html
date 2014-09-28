@@ -17,6 +17,7 @@
 
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>
+    <script src="js/filter.js"></script>
 </head>
 
 <body ng-app="hapi">
@@ -59,10 +60,10 @@
                 <tbody>
                     <tr>
                         <td>
-                            <textarea placeholder={{sellerInfoPlaceholder}} required>{{sellerInfo}}</textarea>
+                            <textarea placeholder="{{sellerInfoPlaceholder}}" maxRows="7" ng-model="sellerInfo" required></textarea>
                         </td>
                         <td>
-                            <textarea placeholder={{buyerInfoPlaceholder}} required>{{buyerInfo}}</textarea>
+                            <textarea placeholder="{{buyerInfoPlaceholder}}"  rows="7" ng-model="buyerInfo" required></textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -91,30 +92,29 @@
                 <tr ng-repeat="item in items track by $index">
                     <td class="prod-lp">{{$index + 1}}</td>
                     <td class="prod-name">
-                        <input type="text" placeholder="nazwa produktu lub usługi" value="{{item.name}}" required/>
+                        <input type="text" placeholder="nazwa produktu lub usługi" ng-model="item.name" required/>
                     </td>
                     <td class="prod-amount number">
-                        <input type="text" class="control" maxlength="3" value="{{item.amount}}" pattern="[0-9]+" ng-model="item.amount" ng-change="updateItem(item)" required/>
+                        <input type="text" class="control" maxlength="3" pattern="[0-9]+" ng-model="item.amount" ng-blur="updateItem(item)" required/>
                     </td>
                     <td class="prod-price number">
-                        <input type="text" class="control" maxlength="9" value="{{item.price}}" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-change="updateItem(item)" required/>
+                        <input type="text" class="control" maxlength="8" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-blur="updateItem(item)" required/>
                     </td>
-                    <td class="prod-value number">{{item.value}}</td>
+                    <td class="prod-value number">{{item.value | asMoney}}</td>
 
                     <td class="prod-vat-percent number">
-                        <input type="text" value="{{item.vatPercent}}" maxlength="2" ng-model="item.vatPercent" ng-change="updateItem(item)" required/><span class="percent-sign">%</span>
+                        <input type="text"  maxlength="2" ng-model="item.vatPercent" ng-blur="updateItem(item)" required/><span class="percent-sign">%</span>
                     </td>
-                    <td class="prod-vat-value number">{{item.vatValue}}</td>
-                    <td class="prod-total-cost number">{{item.totalValue}}</td>
+                    <td class="prod-vat-value number">{{item.vatValue | asMoney}}</td>
+                    <td class="prod-total-cost number">{{item.totalValue | asMoney}}</td>
                 </tr>
 
                 <tr class="bold">
                     <td class="prod-sum" colspan="4">Suma [PLN]</td>
-
-                    <td class="prod-value number">{{totalNetto}}</td>
+                    <td class="prod-value number">{{totalNetto | asMoney}}</td>
                     <td class="prod-vat-percent number"> </td>
-                    <td class="prod-vat-amount number">{{totalVAT}}</td>
-                    <td class="prod-total-cost number">{{totalBrutto}}</td>
+                    <td class="prod-vat-amount number">{{totalVAT | asMoney}}</td>
+                    <td class="prod-total-cost number">{{totalBrutto | asMoney}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -131,7 +131,7 @@
     </div>
 
     <div class="row info" id="payment">
-        <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto}} PLN </span>({{totalBruttoText}} PLN {{totalBruttoGrosze}}/100)</div>
+        <div class="col-md-12">Do zapłaty: <span class="total-amount">{{totalBrutto | asMoney}} PLN </span>({{totalBruttoText}} PLN {{totalBruttoGrosze}}/100)</div>
     </div>
 
     <div class="row info">
@@ -148,8 +148,6 @@
         </div>
     </div>
 
-
-
     <div class="row">
         <div class="col-md-6 col-md-push-6 text-center">
             <input id="issuer-name" class="input" type="text" value="{{issuerName}}" ng-model="issuerName" placeholder="imię i nazwisko" maxlength="40" required/>
@@ -161,7 +159,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-danger" ng-click="removeAllItems()">Wyczyść wszystko</button>
+            <button type="button" class="btn btn-danger" ng-click="clearAll()">Wyczyść wszystko</button>
             <button type="button" class="btn btn-success" ng-click="generateInvoice()">Pobierz fakturę</button>
         </div>
     </div>
