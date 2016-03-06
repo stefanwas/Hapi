@@ -1,22 +1,16 @@
-package com.hapi.invoice;
+package com.hapi.invoice.front.service;
 
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hapi.invoice.front.model.Invoice;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 @Path("/invoice")
-public class InvoiceGeneratorWS {
+public class InvoiceService {
 
     private static final String ACCESS_CONTROL = "Access-Control-Allow-Origin";
     private static final String ALL_LOCATIONS = "*";

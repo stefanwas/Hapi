@@ -1,4 +1,4 @@
-package com.hapi.invoice.report;
+package com.hapi.invoice.pdf;
 
 
 import net.sf.jasperreports.engine.*;
@@ -9,7 +9,6 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 

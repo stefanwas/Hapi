@@ -1,10 +1,20 @@
+Phase 1: MVP (minimal viable product)
+
 1. Improve page layout
-2. display currency with formatting
-3. add file download js to handle frontend-backend communication
-4. prepare pdf template
+2. display currency with pl formatting
+3. prepare proper pdf template
+
+Phase 2. (guts improvements)
+4. add file download js to handle frontend-backend communication
 5. add field validation
 6. add integration test (backend) DONE
 7. logging
 8. optimize jasper report factory (read and compile the template only once) DONE
 9. change main package name
 10. error handling
+
+Phase 3 (feature improvements)
+1. Umożliwić usuwanie nie tylko ostatniej pozycji
+2. Ilość int->float
+
+Phase 4. (add templates store mechanism)

@@ -10,14 +10,14 @@
                             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
                             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <bean id="invoiceGenerator" class="com.hapi.invoice.InvoiceGenerator">
+    <bean id="invoiceGenerator" class="com.hapi.invoice.front.service.InvoiceGenerator">
         <property name="reportFactory" ref="reportFactory"/>
     </bean>
 
-    <bean id="invoiceUnmarshaller" class="com.hapi.invoice.InvoiceUnmarshaller">
+    <bean id="invoiceUnmarshaller" class="com.hapi.invoice.front.service.InvoiceUnmarshaller">
     </bean>
 
-    <bean id="reportFactory" class="com.hapi.invoice.report.ReportFactory" init-method="init">
+    <bean id="reportFactory" class="com.hapi.invoice.pdf.ReportFactory" init-method="init">
     </bean>
 
 </beans>

@@ -1,4 +1,4 @@
-import com.hapi.invoice.InvoiceGenerator;
+import com.hapi.invoice.front.service.InvoiceGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

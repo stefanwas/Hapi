@@ -21,7 +21,7 @@
         </jaxrs:features>
     </jaxrs:server>
 
-    <bean id="invoiceGeneratorWS" class="com.hapi.invoice.InvoiceGeneratorWS">
+    <bean id="invoiceGeneratorWS" class="com.hapi.invoice.front.service.InvoiceService">
             <property name="invoiceGenerator" ref="invoiceGenerator"/>
             <property name="invoiceUnmarshaller" ref="invoiceUnmarshaller" />
     </bean>

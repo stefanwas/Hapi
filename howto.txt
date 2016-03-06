@@ -1,0 +1,5 @@
+1. To run:
+$ mvn jetty:run
+
+2. To open:
+> http://localhost:8080/generator/

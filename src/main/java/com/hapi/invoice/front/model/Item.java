@@ -1,29 +1,33 @@
-package com.hapi.invoice.report;
+package com.hapi.invoice.front.model;
 
-public class ReportDataItem {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 
-    private String itemName;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Item {
+
+    @XmlElement
+    private String name;
+    @XmlElement
     private float amount;
+    @XmlElement
     private float price;
+    @XmlElement
     private float value;
+    @XmlElement
     private float vatPercent;
+    @XmlElement
     private float vatValue;
+    @XmlElement
     private float totalValue;
 
-    public float getTotalValue() {
-        return totalValue;
+    public String getName() {
+        return name;
     }
 
-    public void setTotalValue(float totalValue) {
-        this.totalValue = totalValue;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public float getAmount() {
@@ -66,6 +70,11 @@ public class ReportDataItem {
         this.vatValue = vatValue;
     }
 
+    public float getTotalValue() {
+        return totalValue;
+    }
 
-
+    public void setTotalValue(float totalValue) {
+        this.totalValue = totalValue;
+    }
 }

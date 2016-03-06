@@ -1,8 +1,10 @@
-package com.hapi.invoice;
+package com.hapi.invoice.front.service;
 
-import com.hapi.invoice.report.ReportData;
-import com.hapi.invoice.report.ReportDataItem;
-import com.hapi.invoice.report.ReportFactory;
+import com.hapi.invoice.front.model.Invoice;
+import com.hapi.invoice.front.model.Item;
+import com.hapi.invoice.pdf.ReportData;
+import com.hapi.invoice.pdf.ReportDataItem;
+import com.hapi.invoice.pdf.ReportFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;

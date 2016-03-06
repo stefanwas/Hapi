@@ -89,7 +89,14 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     };
 
     $scope.updateItem = function(item) {
-        item.value = (item.amount == null || item.price == null) ? 0 : item.amount * item.price;
+
+        if (item.amount == null || item.price == null) {
+            item.value = 0;
+        } else {
+            var price = item.price.replace(".","").replace(",", ".");
+            item.value = item.amount * price;
+        }
+
         item.vatValue = (item.vatPercent == null) ? 0 : item.value * item.vatPercent / 100;
         item.totalValue = item.value + item.vatValue;
 

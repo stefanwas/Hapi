@@ -1,34 +1,18 @@
-package com.hapi.invoice;
+package com.hapi.invoice.pdf;
 
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Invoice {
+public class ReportData {
 
-    @XmlElement
     private String invoiceNumber;
-    @XmlElement
-    private final List<Item> items = new ArrayList<>();
-    @XmlElement
+    private final List<ReportDataItem> items = new ArrayList<>();
     private String sellDate;
-    @XmlElement
     private String issueDate;
-    @XmlElement
     private String sellerInfo;
-    @XmlElement
     private String buyerInfo;
-    @XmlElement
     private String paymentPeriod;
-    @XmlElement
     private String paymentForm;
-    @XmlElement
     private String issuer;
 
     public String getInvoiceNumber() {
@@ -37,6 +21,10 @@ public class Invoice {
 
     public void setInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
+    }
+
+    public List<ReportDataItem> getItems() {
+        return items;
     }
 
     public String getSellDate() {
@@ -71,10 +59,6 @@ public class Invoice {
         this.buyerInfo = buyerInfo;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
     public String getPaymentPeriod() {
         return paymentPeriod;
     }
@@ -98,6 +82,7 @@ public class Invoice {
     public void setIssuer(String issuer) {
         this.issuer = issuer;
     }
+
 
 
 }
