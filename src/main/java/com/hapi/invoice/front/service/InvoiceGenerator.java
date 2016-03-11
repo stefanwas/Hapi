@@ -28,7 +28,13 @@ public class InvoiceGenerator {
         ReportData reportData = new ReportData();
 
         reportData.setInvoiceNumber(invoice.getInvoiceNumber());
-        //TODO convert other fields
+        reportData.setSellDate(invoice.getSellDate());
+        reportData.setIssueDate(invoice.getIssueDate());
+        reportData.setSellerInfo(invoice.getSellerInfo());
+        reportData.setBuyerInfo(invoice.getBuyerInfo());
+        reportData.setPaymentPeriod(invoice.getPaymentPeriod());
+        reportData.setPaymentForm(invoice.getPaymentForm());
+        reportData.setIssuer(invoice.getIssuer());
         reportData.getItems().addAll(convertToReportItemData(invoice.getItems()));
 
         return reportData;
@@ -50,6 +56,7 @@ public class InvoiceGenerator {
         return reportDataItems;
     }
 
+    //TODO remove it
     public Invoice createFakeInvoice() {
         Invoice invoice = new Invoice();
 

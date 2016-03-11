@@ -36,11 +36,11 @@ public class ReportFactory {
         return report;
     }
 
-    private JasperPrint fillReportWithData(JasperReport report, ReportData reportData) throws JRException {
+    private JasperPrint fillReportWithData(JasperReport jasperReport, ReportData reportData) throws JRException {
         JRBeanCollectionDataSource invoiceItems = new JRBeanCollectionDataSource(reportData.getItems());
         Map<String, Object> invoiceParams = extractReportParams(reportData);
 
-        JasperPrint print = JasperFillManager.fillReport(report, invoiceParams, invoiceItems);
+        JasperPrint print = JasperFillManager.fillReport(jasperReport, invoiceParams, invoiceItems);
 
         return print;
     }
@@ -51,6 +51,8 @@ public class ReportFactory {
 
         //TODO fill it
         params.put("invoiceNumber", reportData.getInvoiceNumber());
+        params.put("sellDate", reportData.getSellDate());
+        params.put("issueDate", reportData.getIssueDate());
 
         return params;
     }

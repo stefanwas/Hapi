@@ -1,179 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-03-12T00:04:15 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test1report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba284976-8aa7-42b1-aafa-0eb9cac21b8a">
-	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="table">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TH" mode="Opaque" backcolor="#DEB887">
-		<box>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_CH" mode="Opaque" backcolor="#FFE3BF">
-		<box>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 2">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 3">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 4">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<subDataset name="Table Dataset 1" uuid="5bd2d6b9-458f-470f-bc01-5e72fe371e52">
-		<field name="itemName" class="java.lang.String"/>
-	</subDataset>
-	<parameter name="dane" class="net.sf.jasperreports.engine.JREmptyDataSource"/>
 	<parameter name="invoiceNumber" class="java.lang.String"/>
-	<parameter name="DS1" class="java.util.Collection"/>
+	<parameter name="sellDate" class="java.lang.String"/>
+	<parameter name="issueDate" class="java.lang.String"/>
 	<field name="itemName" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="78" splitType="Stretch">
+		<band height="278" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="60c7e77e-b39e-4a0b-ab76-fbeee2ec41fa" x="194" y="46" width="166" height="32"/>
+				<reportElement x="180" y="10" width="200" height="32" uuid="60c7e77e-b39e-4a0b-ab76-fbeee2ec41fa"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Faktura VAT]]></text>
 			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement uuid="5a30bd3d-1753-4693-afa8-b14d310ea0df" x="227" y="0" width="100" height="20"/>
+				<reportElement x="195" y="42" width="170" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0df"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{invoiceNumber}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="86" y="70" width="180" height="16" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0aa"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$P{sellDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="90" width="180" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0bb"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$P{issueDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="86" height="16" uuid="f4005641-002c-426b-8ef7-a7963dc215a8"/>
+				<text><![CDATA[Data sprzedaży:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="140" height="20" uuid="dfc7fd7b-e512-4548-adf9-e038fdee934e"/>
+				<text><![CDATA[Data wystawienia faktury:]]></text>
+			</staticText>
 		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="143" splitType="Stretch">
-			<componentElement>
-				<reportElement uuid="79776d87-0aa4-4afe-bb43-103c822d4bb6" key="table 4" style="table 4" x="228" y="36" width="180" height="80"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="9343790a-b9bc-4329-9f9a-af76c8f381be">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{DS1})]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="90" uuid="f030470e-c13d-4376-89d2-9511413d2138">
-						<jr:columnHeader style="table 4_CH" height="30"/>
-						<jr:columnFooter style="table 4_CH" height="30"/>
-						<jr:detailCell style="table 4_TD" height="20">
-							<textField>
-								<reportElement uuid="b86aa031-2029-49f9-968c-bac7f29657f4" x="0" y="0" width="90" height="20"/>
-								<textElement/>
-								<textFieldExpression><![CDATA[$F{itemName}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="faf580bc-60f5-415e-afaf-855cdd4dbe58">
-						<jr:columnHeader style="table 4_CH" height="30"/>
-						<jr:columnFooter style="table 4_CH" height="30"/>
-						<jr:detailCell style="table 4_TD" height="20"/>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-		</band>
-	</columnHeader>
 	<detail>
 		<band height="142" splitType="Stretch">
 			<textField>
-				<reportElement uuid="0fcf1816-04b4-403a-9bf2-950ce6d7f28a" x="227" y="37" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="227" y="37" width="100" height="20" uuid="0fcf1816-04b4-403a-9bf2-950ce6d7f28a"/>
 				<textFieldExpression><![CDATA[$F{itemName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
 </jasperReport>
