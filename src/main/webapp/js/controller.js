@@ -36,6 +36,22 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         };
     }
 
+    function prepareItem(item) {
+        return {
+            name : item.name,
+            amount : item.amount,
+            price : formatCurrency(item.price),
+            netValue : formatCurrency(item.netValue),
+            vatPercent : item.vatPercent,
+            vatValue : formatCurrency(item.vatValue),
+            grossValue : formatCurrency(item.grossValue)
+        };
+    }
+
+    function prepareAllItem(items) {
+        //TODO
+    }
+
     function init() {
         $scope.addNewItem();
     }
@@ -45,6 +61,16 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         return Math.floor((total - Math.floor(total)) * 100);
     }
 
+    //TODO reuse the code from asMoney filter
+    function formatCurrency(value) {
+        if (value) {
+            return value.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+,)/g, "$1.");
+        } else {
+            return 0;
+        }
+    }
+
+
     function createInvoice() {
         return {
             invoiceNumber : $scope.invoiceNumber,
@@ -52,9 +78,9 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             issueDate : $scope.issueDate,
             sellerInfo : $scope.sellerInfo,
             buyerInfo : $scope.buyerInfo,
-            totalNetValue : $scope.totalNetto,
-            totalVatValue : $scope.totalVAT,
-            totalGrossValue : $scope.totalBrutto,
+            totalNetValue : formatCurrency($scope.totalNetto),
+            totalVatValue : formatCurrency($scope.totalVAT),
+            totalGrossValue : formatCurrency($scope.totalBrutto),
             totalGrossValueText : $scope.totalBruttoAsText,
             paymentPeriod : $scope.paymentPeriod,
             paymentForm : $scope.paymentForm,
