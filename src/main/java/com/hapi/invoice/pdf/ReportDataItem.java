@@ -1,69 +1,70 @@
 package com.hapi.invoice.pdf;
 
+
 public class ReportDataItem {
 
-    private String itemName;
-    private float amount;
-    private float price;
-    private float value;
-    private float vatPercent;
-    private float vatValue;
-    private float totalValue;
+    private String name;
+    private String amount;
+    private String price;
+    private String value;
+    private String vatPercent;
+    private String vatValue;
+    private String totalValue;
 
-    public float getTotalValue() {
-        return totalValue;
+    public String getName() {
+        return name;
     }
 
-    public void setTotalValue(float totalValue) {
-        this.totalValue = totalValue;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public float getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public float getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
-    public float getVatPercent() {
+    public String getVatPercent() {
         return vatPercent;
     }
 
-    public void setVatPercent(float vatPercent) {
+    public void setVatPercent(String vatPercent) {
         this.vatPercent = vatPercent;
     }
 
-    public float getVatValue() {
+    public String getVatValue() {
         return vatValue;
     }
 
-    public void setVatValue(float vatValue) {
+    public void setVatValue(String vatValue) {
         this.vatValue = vatValue;
+    }
+
+    public String getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(String totalValue) {
+        this.totalValue = totalValue;
     }
 
 

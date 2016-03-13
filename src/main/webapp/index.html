@@ -100,13 +100,13 @@
                     <td class="prod-price number">
                         <input type="text" class="control" maxlength="8" pattern="[0-9]+([\,|\.][0-9]+)?" ng-model="item.price" ng-blur="updateItem(item)" required/>
                     </td>
-                    <td class="prod-value number">{{item.value | asMoney}}</td>
+                    <td class="prod-value number">{{item.netValue | asMoney}}</td>
 
                     <td class="prod-vat-percent number">
                         <input type="text"  maxlength="2" ng-model="item.vatPercent" ng-blur="updateItem(item)" required/><span class="percent-sign">%</span>
                     </td>
                     <td class="prod-vat-value number">{{item.vatValue | asMoney}}</td>
-                    <td class="prod-total-cost number">{{item.totalValue | asMoney}}</td>
+                    <td class="prod-total-cost number">{{item.grossValue | asMoney}}</td>
                 </tr>
 
                 <tr class="bold">

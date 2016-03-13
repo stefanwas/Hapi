@@ -21,7 +21,6 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
 
     function getCurrentDate() {
         var now = new Date();
-
         return now.getDate() + '.' + (now.getMonth() + 1) + '.' + now.getFullYear();
     }
 
@@ -30,10 +29,10 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             name : '',
             amount : 1,
             price : 0,
-            value : 0,
+            netValue : 0,
             vatPercent : 23,
             vatValue : 0,
-            totalValue : 0
+            grossValue : 0
         };
     }
 
@@ -53,9 +52,13 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             issueDate : $scope.issueDate,
             sellerInfo : $scope.sellerInfo,
             buyerInfo : $scope.buyerInfo,
+            totalNetValue : $scope.totalNetto,
+            totalVatValue : $scope.totalVAT,
+            totalGrossValue : $scope.totalBrutto,
+            totalGrossValueText : $scope.totalBruttoAsText,
             paymentPeriod : $scope.paymentPeriod,
             paymentForm : $scope.paymentForm,
-            issuer : $scope.issuerName,
+            issuerName : $scope.issuerName,
             items : $scope.items
         };
     }
@@ -84,33 +87,32 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             $scope.paymentPeriod = '';
             $scope.paymentForm = '';
             $scope.issuerName = '';
-
             $scope.removeAllItems();
     };
 
     $scope.updateItem = function(item) {
 
         if (item.amount == null || item.price == null) {
-            item.value = 0;
+            item.netValue = 0;
         } else {
             var price = item.price.replace(".","").replace(",", ".");
-            item.value = item.amount * price;
+            item.netValue = item.amount * price;
         }
 
-        item.vatValue = (item.vatPercent == null) ? 0 : item.value * item.vatPercent / 100;
-        item.totalValue = item.value + item.vatValue;
+        item.vatValue = (item.vatPercent == null) ? 0 : item.netValue * item.vatPercent / 100;
+        item.grossValue = item.netValue + item.vatValue;
 
         $scope.updateTotal();
     };
 
     $scope.updateTotal = function() {
-        var totalNetto = _.reduce($scope.items, function(sum, item) {return sum + item.value}, 0);
+        var totalNetto = _.reduce($scope.items, function(sum, item) {return sum + item.netValue}, 0);
         $scope.totalNetto = totalNetto;
 
         var totalVAT = _.reduce($scope.items, function(sum, item) {return sum + item.vatValue}, 0);
         $scope.totalVAT = totalVAT;
 
-        var totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.totalValue}, 0);
+        var totalBrutto = _.reduce($scope.items, function(sum, item) {return sum + item.grossValue}, 0);
         $scope.totalBrutto = totalBrutto;
 
 

@@ -1,8 +1,10 @@
 Phase 1: MVP (minimal viable product)
 
 1. Improve page layout
-2. display currency with pl formatting
+2. display currency with pl formatting -
 3. prepare proper pdf template
+4. poprawić polskie znaki
+5. exception w js
 
 Phase 2. (guts improvements)
 4. add file download js to handle frontend-backend communication
@@ -12,6 +14,8 @@ Phase 2. (guts improvements)
 8. optimize jasper report factory (read and compile the template only once) DONE
 9. change main package name
 10. error handling
+11. use tomcat in mvn
+12. simplify spring ws config
 
 Phase 3 (feature improvements)
 1. Umożliwić usuwanie nie tylko ostatniej pozycji

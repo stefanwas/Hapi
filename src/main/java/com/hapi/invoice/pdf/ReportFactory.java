@@ -53,6 +53,8 @@ public class ReportFactory {
         params.put("invoiceNumber", reportData.getInvoiceNumber());
         params.put("sellDate", reportData.getSellDate());
         params.put("issueDate", reportData.getIssueDate());
+        params.put("sellerInfo", reportData.getSellerInfo());
+        params.put("buyerInfo", reportData.getBuyerInfo());
 
         return params;
     }

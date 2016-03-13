@@ -34,7 +34,7 @@ public class InvoiceGenerator {
         reportData.setBuyerInfo(invoice.getBuyerInfo());
         reportData.setPaymentPeriod(invoice.getPaymentPeriod());
         reportData.setPaymentForm(invoice.getPaymentForm());
-        reportData.setIssuer(invoice.getIssuer());
+        reportData.setIssuerName(invoice.getIssuerName());
         reportData.getItems().addAll(convertToReportItemData(invoice.getItems()));
 
         return reportData;
@@ -47,7 +47,7 @@ public class InvoiceGenerator {
         for (Item item : items) {
             ReportDataItem dataItem = new ReportDataItem();
 
-            dataItem.setItemName(item.getName());
+            dataItem.setName(item.getName());
             //TODO convert other fields
 
             reportDataItems.add(dataItem);
@@ -65,7 +65,7 @@ public class InvoiceGenerator {
         invoice.setSellDate("2014.09.10");
         invoice.setPaymentForm("przelew");
         invoice.setPaymentPeriod("14 dni");
-        invoice.setIssuer("Stefan Telefan");
+        invoice.setIssuerName("Stefan Telefan");
 
         for (int i = 0; i < 3; i++) {
             invoice.getItems().add(createFakeItem());
@@ -77,13 +77,13 @@ public class InvoiceGenerator {
     private Item createFakeItem() {
         Item item = new Item();
 
-        item.setName("Ziemniaki");
-        item.setAmount(100);
-        item.setPrice(4.5f);
-        item.setValue(450);
-        item.setVatPercent(23);
-        item.setVatValue(135);
-        item.setTotalValue(650.5f);
+//        item.setName("Ziemniaki");
+//        item.setAmount(100);
+//        item.setPrice(4.5f);
+//        item.setValue(450);
+//        item.setVatPercent(23);
+//        item.setVatValue(135);
+//        item.setTotalValue(650.5f);
 
         return item;
     }

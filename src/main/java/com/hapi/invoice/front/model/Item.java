@@ -10,17 +10,17 @@ public class Item {
     @XmlElement
     private String name;
     @XmlElement
-    private float amount;
+    private String amount;
     @XmlElement
-    private float price;
+    private String price;
     @XmlElement
-    private float value;
+    private String value;
     @XmlElement
-    private float vatPercent;
+    private String vatPercent;
     @XmlElement
-    private float vatValue;
+    private String vatValue;
     @XmlElement
-    private float totalValue;
+    private String totalValue;
 
     public String getName() {
         return name;
@@ -30,51 +30,51 @@ public class Item {
         this.name = name;
     }
 
-    public float getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public float getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
-    public float getVatPercent() {
+    public String getVatPercent() {
         return vatPercent;
     }
 
-    public void setVatPercent(float vatPercent) {
+    public void setVatPercent(String vatPercent) {
         this.vatPercent = vatPercent;
     }
 
-    public float getVatValue() {
+    public String getVatValue() {
         return vatValue;
     }
 
-    public void setVatValue(float vatValue) {
+    public void setVatValue(String vatValue) {
         this.vatValue = vatValue;
     }
 
-    public float getTotalValue() {
+    public String getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(float totalValue) {
+    public void setTotalValue(String totalValue) {
         this.totalValue = totalValue;
     }
 }

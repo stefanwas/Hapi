@@ -29,7 +29,15 @@ public class Invoice {
     @XmlElement
     private String paymentForm;
     @XmlElement
-    private String issuer;
+    private String totalNetValue;
+    @XmlElement
+    private String totalVatValue;
+    @XmlElement
+    private String totalGrossValue;
+    @XmlElement
+    private String totalGrossValueText;
+    @XmlElement
+    private String issuerName;
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -91,13 +99,43 @@ public class Invoice {
         this.paymentForm = paymentForm;
     }
 
-    public String getIssuer() {
-        return issuer;
+    public String getIssuerName() {
+        return issuerName;
     }
 
-    public void setIssuer(String issuer) {
-        this.issuer = issuer;
+    public void setIssuerName(String issuerName) {
+        this.issuerName = issuerName;
     }
 
+    public String getTotalNetValue() {
+        return totalNetValue;
+    }
 
+    public void setTotalNetValue(String totalNetValue) {
+        this.totalNetValue = totalNetValue;
+    }
+
+    public String getTotalVatValue() {
+        return totalVatValue;
+    }
+
+    public void setTotalVatValue(String totalVatValue) {
+        this.totalVatValue = totalVatValue;
+    }
+
+    public String getTotalGrossValue() {
+        return totalGrossValue;
+    }
+
+    public void setTotalGrossValue(String totalGrossValue) {
+        this.totalGrossValue = totalGrossValue;
+    }
+
+    public String getTotalGrossValueText() {
+        return totalGrossValueText;
+    }
+
+    public void setTotalGrossValueText(String totalGrossValueText) {
+        this.totalGrossValueText = totalGrossValueText;
+    }
 }

@@ -1,5 +1,7 @@
 package com.hapi.invoice.pdf;
 
+import com.hapi.invoice.front.model.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,11 @@ public class ReportData {
     private String buyerInfo;
     private String paymentPeriod;
     private String paymentForm;
-    private String issuer;
+    private String totalNetValue;
+    private String totalVatValue;
+    private String totalGrossValue;
+    private String totalGrossValueText;
+    private String issuerName;
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -21,10 +27,6 @@ public class ReportData {
 
     public void setInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
-    }
-
-    public List<ReportDataItem> getItems() {
-        return items;
     }
 
     public String getSellDate() {
@@ -59,6 +61,10 @@ public class ReportData {
         this.buyerInfo = buyerInfo;
     }
 
+    public List<ReportDataItem> getItems() {
+        return items;
+    }
+
     public String getPaymentPeriod() {
         return paymentPeriod;
     }
@@ -75,14 +81,43 @@ public class ReportData {
         this.paymentForm = paymentForm;
     }
 
-    public String getIssuer() {
-        return issuer;
+    public String getIssuerName() {
+        return issuerName;
     }
 
-    public void setIssuer(String issuer) {
-        this.issuer = issuer;
+    public void setIssuerName(String issuerName) {
+        this.issuerName = issuerName;
     }
 
+    public String getTotalNetValue() {
+        return totalNetValue;
+    }
 
+    public void setTotalNetValue(String totalNetValue) {
+        this.totalNetValue = totalNetValue;
+    }
 
+    public String getTotalVatValue() {
+        return totalVatValue;
+    }
+
+    public void setTotalVatValue(String totalVatValue) {
+        this.totalVatValue = totalVatValue;
+    }
+
+    public String getTotalGrossValue() {
+        return totalGrossValue;
+    }
+
+    public void setTotalGrossValue(String totalGrossValue) {
+        this.totalGrossValue = totalGrossValue;
+    }
+
+    public String getTotalGrossValueText() {
+        return totalGrossValueText;
+    }
+
+    public void setTotalGrossValueText(String totalGrossValueText) {
+        this.totalGrossValueText = totalGrossValueText;
+    }
 }
