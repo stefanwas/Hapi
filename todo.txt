@@ -5,6 +5,7 @@ Phase 1: MVP (minimal viable product)
 3. prepare proper pdf template
 4. poprawić polskie znaki
 5. exception w js
+6  remove pdf model classes DONE
 
 Phase 2. (guts improvements)
 4. add file download js to handle frontend-backend communication

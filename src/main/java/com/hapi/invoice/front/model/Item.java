@@ -14,13 +14,13 @@ public class Item {
     @XmlElement
     private String price;
     @XmlElement
-    private String value;
+    private String netValue;
     @XmlElement
     private String vatPercent;
     @XmlElement
     private String vatValue;
     @XmlElement
-    private String totalValue;
+    private String grossValue;
 
     public String getName() {
         return name;
@@ -46,12 +46,12 @@ public class Item {
         this.price = price;
     }
 
-    public String getValue() {
-        return value;
+    public String getNetValue() {
+        return netValue;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setNetValue(String netValue) {
+        this.netValue = netValue;
     }
 
     public String getVatPercent() {
@@ -70,11 +70,11 @@ public class Item {
         this.vatValue = vatValue;
     }
 
-    public String getTotalValue() {
-        return totalValue;
+    public String getGrossValue() {
+        return grossValue;
     }
 
-    public void setTotalValue(String totalValue) {
-        this.totalValue = totalValue;
+    public void setGrossValue(String grossValue) {
+        this.grossValue = grossValue;
     }
 }
