@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-03-13T20:17:51 -->
+<!-- 2016-03-16T22:46:55 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba284976-8aa7-42b1-aafa-0eb9cac21b8a">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -14,7 +14,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+	<style name="Table_CH" mode="Opaque" backcolor="#CCC6C6">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -69,7 +69,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="541" splitType="Stretch">
+		<band height="632" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
 				<reportElement x="180" y="20" width="200" height="32" uuid="60c7e77e-b39e-4a0b-ab76-fbeee2ec41fa"/>
@@ -204,8 +204,14 @@
 								<text><![CDATA[Lp.]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1">
+						<jr:columnFooter height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<box>
+								<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20"/>
 					</jr:column>
@@ -222,7 +228,14 @@
 								<text><![CDATA[Product/Usługa]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1"/>
+						<jr:columnFooter height="20" rowSpan="1">
+							<box>
+								<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="170" height="20" uuid="c59521ef-79a0-44c7-ba92-a00bb03e1499"/>
@@ -239,10 +252,18 @@
 								<text><![CDATA[Ilość]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1"/>
+						<jr:columnFooter height="20" rowSpan="1">
+							<box>
+								<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="20" uuid="d95d5929-90bf-4398-bd54-368b79d2f9a0"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -258,10 +279,19 @@
 								<text><![CDATA[Cena netto]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1"/>
+						<jr:columnFooter height="20" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="65" height="20" uuid="72d3e4fc-de93-4990-a957-fd866db09d96"/>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[SUMA[PLN]]]></text>
+							</staticText>
+						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="65" height="20" uuid="3286546d-345c-461c-b8be-9c9c0ce32936"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -277,15 +307,19 @@
 								<text><![CDATA[Kwota netto]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1">
+						<jr:columnFooter style="Table_TH" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="75" height="20" uuid="c604b6d5-04e9-4554-adcb-ac3ecd9a55f3"/>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<font isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$P{totalNetValueTable}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="75" height="20" uuid="a9c89933-0f56-464c-a9f5-3dcb762fa8e1"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{netValue}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -301,10 +335,11 @@
 								<text><![CDATA[VAT]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1"/>
+						<jr:columnFooter style="Table_TH" height="20" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="35" height="20" uuid="7177020c-ac55-4d53-b1ab-f4241c8fbe10"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{vatPercent}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -318,15 +353,19 @@
 								<text><![CDATA[Kwota VAT]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1">
+						<jr:columnFooter style="Table_TH" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="70" height="20" uuid="14ec7b2b-925d-442c-89a6-36e57442a9c5"/>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<font isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$P{totalVatValueTable}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="70" height="20" uuid="b882e9d0-adb5-4a6e-8af1-8381c13dd8b6"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{vatValue}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -342,15 +381,19 @@
 								<text><![CDATA[Kwota brutto]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="20" rowSpan="1">
+						<jr:columnFooter style="Table_TH" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="75" height="20" uuid="a5add3c1-bd6a-4f4c-a853-bcf101f3ac08"/>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<font isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$P{totalGrossValueTable}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="75" height="20" uuid="01fb1582-706d-44f4-bf67-46dbfffcb09c"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{grossValue}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -358,25 +401,53 @@
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="430" width="70" height="20" uuid="d6eb12da-6271-4872-a25c-f0839ea1de8f"/>
+				<reportElement x="0" y="430" width="60" height="20" uuid="d6eb12da-6271-4872-a25c-f0839ea1de8f"/>
+				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Do zapłaty:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="70" y="430" width="70" height="20" uuid="c603bc14-6521-4de3-afe8-a01d23ffa941"/>
-				<textElement>
+				<reportElement x="60" y="430" width="70" height="20" uuid="c603bc14-6521-4de3-afe8-a01d23ffa941"/>
+				<textElement verticalAlignment="Bottom">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{totalGrossValue}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="430" width="320" height="20" uuid="0858907e-077b-4ad5-a517-41409752f75e"/>
+				<reportElement x="130" y="430" width="420" height="20" uuid="0858907e-077b-4ad5-a517-41409752f75e"/>
+				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$P{totalGrossValueText}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="470" width="90" height="20" uuid="ac7b206f-429d-4c7a-901a-fee35ba8ce23"/>
+				<text><![CDATA[Termin płatności:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="490" width="90" height="20" uuid="1d6a9e10-7b7c-47da-994d-8eb0383d7415"/>
+				<text><![CDATA[Forma płatności:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="470" width="100" height="20" uuid="54b2772f-fbe9-4c43-b0f9-1527ff143d58"/>
+				<textFieldExpression><![CDATA[$P{paymentPeriod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="490" width="100" height="20" uuid="2cc4b394-ce8f-4468-96c2-1eb7f186c81e"/>
+				<textFieldExpression><![CDATA[$P{paymentForm}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="350" y="541" width="177" height="1" uuid="097e6b8a-b615-4087-a106-a60212d75427"/>
+			</line>
+			<staticText>
+				<reportElement x="350" y="540" width="177" height="20" uuid="8becdaaa-2cb9-4046-921d-b41a93bfa458"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[osoba wystawiająca fakturę]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="350" y="520" width="177" height="21" uuid="d7c20c25-b0d7-4559-8dc5-5296843533d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{issuerName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
-	<detail>
-		<band height="142" splitType="Stretch"/>
-	</detail>
 	<summary>
 		<band height="50"/>
 	</summary>
