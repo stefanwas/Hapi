@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-03-16T22:46:55 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba284976-8aa7-42b1-aafa-0eb9cac21b8a">
+<!-- 2016-03-16T23:56:42 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba284976-8aa7-42b1-aafa-0eb9cac21b8a">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -79,45 +79,24 @@
 				<text><![CDATA[Faktura VAT]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="245" y="60" width="135" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0df"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{invoiceNumber}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="86" y="90" width="124" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0aa">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[$P{sellDate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="140" y="110" width="130" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0bb"/>
-				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[$P{issueDate}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="90" width="86" height="20" uuid="f4005641-002c-426b-8ef7-a7963dc215a8">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[Data sprzedaży:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="110" width="140" height="20" uuid="dfc7fd7b-e512-4548-adf9-e038fdee934e"/>
-				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[Data wystawienia faktury:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="225" y="60" width="20" height="20" uuid="1eaa8379-15cd-42f9-b5c8-357af90cb94e">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
+				<reportElement x="180" y="60" width="200" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0df"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Nr]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Nr " + $P{invoiceNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="90" width="248" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0aa">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Data sprzedaży: " + $P{sellDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="110" width="248" height="20" uuid="5a30bd3d-1753-4693-afa8-b14d310ea0bb"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Data wystawienia faktury: " + $P{issueDate}]]></textFieldExpression>
+			</textField>
 			<frame>
 				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="140" width="280" height="21" backcolor="#CCC6C6" uuid="42d774ad-0330-42a3-9b9a-b1297d69d8fb"/>
 				<box>
@@ -225,7 +204,7 @@
 									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Product/Usługa]]></text>
+								<text><![CDATA[Produkt/Usługa]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter height="20" rowSpan="1">
@@ -340,7 +319,7 @@
 							<textField>
 								<reportElement x="0" y="0" width="35" height="20" uuid="7177020c-ac55-4d53-b1ab-f4241c8fbe10"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$F{vatPercent}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{vatPercent} + " %"]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -406,32 +385,24 @@
 				<text><![CDATA[Do zapłaty:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="60" y="430" width="70" height="20" uuid="c603bc14-6521-4de3-afe8-a01d23ffa941"/>
+				<reportElement x="60" y="430" width="110" height="20" uuid="c603bc14-6521-4de3-afe8-a01d23ffa941"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{totalGrossValue}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{totalGrossValue} + " PLN"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="430" width="420" height="20" uuid="0858907e-077b-4ad5-a517-41409752f75e"/>
+				<reportElement x="170" y="430" width="380" height="20" uuid="0858907e-077b-4ad5-a517-41409752f75e"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$P{totalGrossValueText}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="470" width="90" height="20" uuid="ac7b206f-429d-4c7a-901a-fee35ba8ce23"/>
-				<text><![CDATA[Termin płatności:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="490" width="90" height="20" uuid="1d6a9e10-7b7c-47da-994d-8eb0383d7415"/>
-				<text><![CDATA[Forma płatności:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="90" y="470" width="100" height="20" uuid="54b2772f-fbe9-4c43-b0f9-1527ff143d58"/>
-				<textFieldExpression><![CDATA[$P{paymentPeriod}]]></textFieldExpression>
+				<reportElement x="2" y="470" width="188" height="20" uuid="54b2772f-fbe9-4c43-b0f9-1527ff143d58"/>
+				<textFieldExpression><![CDATA["Termin płatności: " + $P{paymentPeriod}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="90" y="490" width="100" height="20" uuid="2cc4b394-ce8f-4468-96c2-1eb7f186c81e"/>
-				<textFieldExpression><![CDATA[$P{paymentForm}]]></textFieldExpression>
+				<reportElement x="2" y="490" width="188" height="20" uuid="2cc4b394-ce8f-4468-96c2-1eb7f186c81e"/>
+				<textFieldExpression><![CDATA["Forma płatności: " + $P{paymentForm}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="350" y="541" width="177" height="1" uuid="097e6b8a-b615-4087-a106-a60212d75427"/>
