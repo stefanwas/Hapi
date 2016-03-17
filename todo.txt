@@ -1,12 +1,12 @@
 Phase 1: MVP (minimal viable product)
 
 1. Improve html page layout
-2. display currency with pl formatting -
+2. display currency with pl formatting - DONE
 3. prepare nice pdf template
 4. poprawić polskie znaki DONE
-5. exception in js
+5. exception in js DONE
 6. remove pdf model classes DONE
-7. poprawić liczbę wyświetlanych itemów
+7. poprawić liczbę wyświetlanych itemów DONE
 
 Phase 2. (guts improvements)
 4. add file download js to handle frontend-backend communication

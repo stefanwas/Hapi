@@ -48,8 +48,12 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         };
     }
 
-    function prepareAllItem(items) {
-        //TODO
+    function prepareAllItems(items) {
+        var preparedItems = [];
+        for (var i = 0; i < items.length; i++) {
+            preparedItems.push(prepareItem(items[i]));
+        }
+        return preparedItems;
     }
 
     function init() {
@@ -64,6 +68,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     //TODO reuse the code from asMoney filter
     function formatCurrency(value) {
         if (value) {
+            value = +value;     // to convert from string into int
             return value.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+,)/g, "$1.");
         } else {
             return 0;
@@ -85,7 +90,7 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
             paymentPeriod : $scope.paymentPeriod,
             paymentForm : $scope.paymentForm,
             issuerName : $scope.issuerName,
-            items : $scope.items
+            items : prepareAllItems($scope.items)
         };
     }
 
@@ -105,15 +110,15 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
     };
 
     $scope.clearAll = function() {
-            $scope.invoiceNumber = '';
-            $scope.deliveryDate = '';
-            $scope.issueDate = '';
-            $scope.sellerInfo = '';
-            $scope.buyerInfo = '';
-            $scope.paymentPeriod = '';
-            $scope.paymentForm = '';
-            $scope.issuerName = '';
-            $scope.removeAllItems();
+        $scope.invoiceNumber = '';
+        $scope.deliveryDate = '';
+        $scope.issueDate = '';
+        $scope.sellerInfo = '';
+        $scope.buyerInfo = '';
+        $scope.paymentPeriod = '';
+        $scope.paymentForm = '';
+        $scope.issuerName = '';
+        $scope.removeAllItems();
     };
 
     $scope.updateItem = function(item) {
@@ -121,7 +126,8 @@ hapi.controller('MainController', function($scope, invoiceService, downloadServi
         if (item.amount == null || item.price == null) {
             item.netValue = 0;
         } else {
-            var price = item.price.replace(".","").replace(",", ".");
+            var strPrice = "" + item.price;
+            var price = strPrice.replace(".","").replace(",", ".");
             item.netValue = item.amount * price;
         }
 

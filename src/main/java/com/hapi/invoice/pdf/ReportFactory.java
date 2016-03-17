@@ -10,6 +10,8 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,13 +39,15 @@ public class ReportFactory {
     }
 
     private JasperPrint fillReportWithData(JasperReport reportTemplate, Invoice invoice) throws JRException {
-        JRBeanCollectionDataSource invoiceItems = new JRBeanCollectionDataSource(invoice.getItems());
+        JRBeanCollectionDataSource invoiceItemsDataSource = new JRBeanCollectionDataSource(invoice.getItems());
+        // this is a hack allowing to display all rows in the report
+        JRBeanCollectionDataSource emptyDataSource = new JRBeanCollectionDataSource(Arrays.asList("empty data"));
 
         Map<String, Object> reportParams = new HashMap<>();
-        reportParams.put("items", invoiceItems);
+        reportParams.put("itemsDataSource", invoiceItemsDataSource);
         reportParams.putAll(createInvoiceParams(invoice));
 
-        JasperPrint print = JasperFillManager.fillReport(reportTemplate, reportParams, invoiceItems);
+        JasperPrint print = JasperFillManager.fillReport(reportTemplate, reportParams, emptyDataSource);
 
         return print;
     }
