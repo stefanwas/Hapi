@@ -9,6 +9,7 @@ Phase 1: MVP (minimal viable product)
 7. poprawić liczbę wyświetlanych itemów DONE
 
 Phase 2. (guts improvements)
+1. escapowanie tekstu
 4. add file download js to handle frontend-backend communication
 5. add field validation
 6. add integration test (backend) DONE
